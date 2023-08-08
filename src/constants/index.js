@@ -110,10 +110,10 @@ const experiences = [
     iconBg: "#fff",
     date: "February 2019 - August 2023",
     points: [
-      "Developing and maintaining web applications using PHP and Wordpress.",
-      "Collaborating with cross-functional teams including designers, product managers, and other developers to create high-quality products.",
-      "Implementing responsive design and ensuring cross-browser compatibility.",
-      "Participating in code reviews and providing constructive feedback to other developers.",
+      "Entwicklung von Webanwendungen unter Verwendung von PHP und Wordpress.",
+      "Zusammenarbeit mit Teams, einschließlich Designern, Produktmanagern und anderen Entwicklern, um qualitativ hochwertige Produkte zu erstellen.",
+      "Umsetzung von responsive Design und Gewährleistung der Kompatibilität mit verschiedenen Browsern.",
+      "Teilnahme an Code-Reviews und Bereitstellung konstruktiven Feedbacks für andere Entwickler.",
     ],
   },
 ];

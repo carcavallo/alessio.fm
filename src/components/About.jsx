@@ -47,19 +47,16 @@ const About = () => {
         variants={fadeIn("", "", 0.1, 1)}
         className="mt-4 text-secondary text-[17px] max-w-3xl leading-[30px]"
       >
-        As a talented DJ, music producer, and software developer, I possess a
-        unique blend of creativity and technical expertise. My passion for
-        creating beats for my rap-loving friends is matched only by my love for
-        spinning tunes in clubs near Chur, Graubünden, and other exciting
-        locations. Additionally, I have a diverse background, being half Italian
-        and half Swiss, which adds a special touch to my artistic flair. In the
-        realm of software development, my proficiency lies in TypeScript and
-        JavaScript, with a specialization in frameworks like React. I take pride
-        in being a quick learner and thrive on collaborating closely with
-        clients to craft efficient, scalable, and user-friendly solutions.
-        Together, we can transform your ideas into vibrant realities, combining
-        the magic of music with the power of technology. Let's embark on a
-        harmonious journey of creativity and innovation!
+        Mit nur 20 Jahren auf dem Tacho, habe ich bereits erfolgreich meine
+        Lehre abgeschlossen und meine Leidenschaften als begabter DJ,
+        Musikproduzent und aufstrebender Softwareentwickler vereint. <br />
+        <br /> Meine Stärken liegen im Bereich der Softwareentwicklung,
+        insbesondere in den Sprachen TypeScript und JavaScript sowie in
+        Frameworks wie React. Mein Ehrgeiz und meine schnelle Auffassungsgabe
+        ermöglichen es mir, mich rasch in neue Herausforderungen einzuarbeiten.
+        Am meisten erblühe ich, wenn ich eng mit Kunden zusammenarbeiten kann,
+        um effiziente, skalierbare und benutzerfreundliche Lösungen zu
+        gestalten.
       </motion.p>
 
       <div className="mt-20 flex flex-wrap gap-10">
