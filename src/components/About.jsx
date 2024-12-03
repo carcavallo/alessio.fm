@@ -7,6 +7,20 @@ import { services } from "../constants";
 import { SectionWrapper } from "../hoc";
 import { fadeIn, textVariant } from "../utils/motion";
 
+// Helper function to calculate age
+const calculateAge = (birthdate) => {
+  const today = new Date();
+  const birthDate = new Date(birthdate);
+  let age = today.getFullYear() - birthDate.getFullYear();
+  const monthDiff = today.getMonth() - birthDate.getMonth();
+
+  if (monthDiff < 0 || (monthDiff === 0 && today.getDate() < birthDate.getDate())) {
+    age--;
+  }
+
+  return age;
+};
+
 const ServiceCard = ({ index, title, icon }) => (
   <Tilt className="xs:w-[250px] w-full">
     <motion.div
@@ -36,6 +50,8 @@ const ServiceCard = ({ index, title, icon }) => (
 );
 
 const About = () => {
+  const age = calculateAge("2002-10-08");
+
   return (
     <>
       <motion.div variants={textVariant()}>
@@ -47,7 +63,7 @@ const About = () => {
         variants={fadeIn("", "", 0.1, 1)}
         className="mt-4 text-secondary text-[17px] max-w-3xl leading-[30px]"
       >
-        Mit nur 20 Jahren auf dem Tacho, habe ich bereits erfolgreich meine
+        Mit nur {age} Jahren auf dem Tacho, habe ich bereits erfolgreich meine
         Lehre abgeschlossen und meine Leidenschaften als begabter DJ,
         Musikproduzent und aufstrebender Softwareentwickler vereint. <br />
         <br /> Meine Stärken liegen im Bereich der Softwareentwicklung,
