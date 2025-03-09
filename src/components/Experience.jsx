@@ -23,13 +23,16 @@ const ExperienceCard = ({ experience }) => {
       date={experience.date}
       iconStyle={{ background: experience.iconBg }}
       icon={
+        <a href={experience.company_link} target="_blank" rel="noopener noreferrer">
         <div className="flex justify-center items-center w-full h-full">
           <img
             src={experience.icon}
             alt={experience.company_name}
             className="w-[60%] h-[60%] object-contain"
+            
           />
         </div>
+      </a>
       }
     >
       <div>
@@ -37,8 +40,10 @@ const ExperienceCard = ({ experience }) => {
         <p
           className="text-secondary text-[16px] font-semibold"
           style={{ margin: 0 }}
-        >
-          {experience.company_name}
+        >          
+          <a href={experience.company_link} target="_blank" rel="noopener noreferrer">
+            {experience.company_name}
+          </a>
         </p>
       </div>
 

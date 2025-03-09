@@ -1,5 +1,5 @@
 import React from "react";
-import Tilt from "react-tilt";
+import Tilt from "react-parallax-tilt";
 import { motion } from "framer-motion";
 
 import { styles } from "../styles";
@@ -63,19 +63,20 @@ const About = () => {
         variants={fadeIn("", "", 0.1, 1)}
         className="mt-4 text-secondary text-[17px] max-w-3xl leading-[30px]"
       >
-        Mit nur {age} Jahren auf dem Tacho, habe ich bereits erfolgreich meine
-        Lehre abgeschlossen und meine Leidenschaften als begabter DJ,
-        Musikproduzent und aufstrebender Softwareentwickler vereint. <br />
-        <br /> Meine Stärken liegen im Bereich der Softwareentwicklung,
-        insbesondere in den Sprachen TypeScript und JavaScript sowie in
-        Frameworks wie React. Mein Ehrgeiz und meine schnelle Auffassungsgabe
-        ermöglichen es mir, mich rasch in neue Herausforderungen einzuarbeiten.
-        Am meisten erblühe ich, wenn ich eng mit Kunden zusammenarbeiten kann,
-        um effiziente, skalierbare und benutzerfreundliche Lösungen zu
-        gestalten.
+        Mit {age} Jahren habe ich erfolgreich meine Lehre als Applikationsentwickler abgeschlossen, wertvolle Berufserfahrung gesammelt und meine Leidenschaften als Musikproduzent, Softwareentwickler und Systemtechniker vereint.
+        <br />
+        <br />
+        <b>Softwareentwicklung:</b> Fundierte Kenntnisse in TypeScript, JavaScript und Frameworks wie React. Erfahrungen in der Backend-Entwicklung mit PHP, APIs und Webservices ermöglichen mir, innovative IT-Lösungen zu schaffen.
+        <br />
+        <br />
+        <b>Systemtechnik & Site Reliability Engineering:</b> Expertise in der Netzwerk- und Serveradministration mit Fokus auf Linux-Systeme wie Ubuntu, Debian und Arch Linux. Tiefgehendes Wissen zu Protokollen und IT-Infrastrukturen. 
+        Als Site Reliability Engineer bei der <a href="https://www.inventx.ch/" class="font-medium text-blue-600 dark:text-blue-500 hover:underline">Inventx AG</a> überwache, warte und migriere ich komplexe Systeme und Infrastrukturen. Zudem automatisiere ich Prozesse mit Ansible, um Effizienz und Zuverlässigkeit zu gewährleisten.
+        <br />
+        <br />
+        Mein Ehrgeiz und meine schnelle Auffassungsgabe helfen mir, mich rasch in neue Herausforderungen einzuarbeiten. Ich arbeite gerne mit Kunden zusammen, um individuelle Lösungen zu gestalten.
       </motion.p>
 
-      <div className="mt-20 flex flex-wrap gap-10">
+      <div className="mt-16 flex flex-wrap gap-10">
         {services.map((service, index) => (
           <ServiceCard key={service.title} index={index} {...service} />
         ))}

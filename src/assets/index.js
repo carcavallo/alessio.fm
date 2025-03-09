@@ -24,15 +24,22 @@ import threejs from "./tech/threejs.svg";
 import meta from "./company/meta.png";
 import shopify from "./company/shopify.png";
 import starbucks from "./company/starbucks.png";
+import pr24 from "./company/pr24.png";
+import army from "./company/army.jpg";
 import tesla from "./company/tesla.png";
+import inventx from "./company/inventx.jpeg";
 
 import carrent from "./carrent.png";
 import jobit from "./jobit.png";
 import tripguide from "./tripguide.png";
+import djselect from "./djselect.png";
+import flipflopapp from "./flipflopscore.png";
+import sonos from "./sonos.png";
 
 export {
   logo,
   backend,
+  army,
   creator,
   mobile,
   web,
@@ -50,6 +57,7 @@ export {
   reactjs,
   redux,
   tailwind,
+  inventx,
   typescript,
   threejs,
   meta,
@@ -59,4 +67,8 @@ export {
   carrent,
   jobit,
   tripguide,
+  pr24,
+  djselect,
+  flipflopapp,
+  sonos,
 };

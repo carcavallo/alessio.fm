@@ -23,6 +23,12 @@ import {
   jobit,
   tripguide,
   threejs,
+  pr24,
+  army,
+  inventx,
+  flipflopapp,
+  djselect,
+  sonos,
 } from "../assets";
 
 export const navLinks = [
@@ -34,10 +40,6 @@ export const navLinks = [
     id: "work",
     title: "Work",
   },
-  {
-    id: "projects",
-    title: "Projects",
-  },
 ];
 
 const services = [
@@ -46,12 +48,20 @@ const services = [
     icon: web,
   },
   {
-    title: "React Native Developer",
+    title: "Frontend Developer",
     icon: mobile,
   },
   {
     title: "Backend Developer",
     icon: backend,
+  },
+  {
+    title: "System Engineer",
+    icon: creator,
+  },
+  {
+    title: "Site Reliability Engineer",
+    icon: creator,
   },
 ];
 
@@ -104,44 +114,72 @@ const technologies = [
 
 const experiences = [
   {
+    title: "Site Reliability Engineer",
+    company_name: "Inventx AG",
+    icon: inventx,
+    iconBg: "white",
+    date: "Februar 2024 - Now",
+    points: [
+      "Überwachung, Wartung und Migration von IT-Systemen und Infrastrukturen zur Sicherstellung der Hochverfügbarkeit.",
+      "Automatisierung von Betriebsprozessen mit Ansible zur Effizienzsteigerung und Fehlerreduktion.",
+      "Optimierung und Implementierung von Monitoring-Lösungen zur frühzeitigen Erkennung und Behebung von Systemproblemen.",
+    ],
+    company_link: "https://inventx.ch",
+  },
+  {
+    title: "Informatikpionier",
+    company_name: "Schweizer Armee",
+    icon: army,
+    iconBg: "red",
+    date: "July 2024 - November 2024",
+    points: [
+      "Absolvierung der Rekrutenschule als Informatikpionier.",
+      "Erlernen von IT-spezifischen Fähigkeiten in einem militärischen Umfeld.",
+      "Aufbau, Wartung und Sicherung von IT-Systemen unter strengen Anforderungen.",
+    ],
+    company_link: "https://www.armee.ch/de",
+  },
+  {
+    title: "Software Engineer",
+    company_name: "pr24",
+    icon: pr24,
+    iconBg: "black",
+    date: "November 2023 - February 2024",
+    points: [
+      "Einarbeitung und Betreuung von bestehenden Kundenprojekten.",
+      "Durchführung von PHP-Migrationen und Optimierung von Backends.",
+      "Betreuung von Lernenden als erster Ansprechpartner bei Softwareproblemen.",
+      "Entwicklung der Flip-Flop-App für medizinische Anwendungen.",
+    ],
+    company_link: "https://pr24.ch/",
+  },
+  {
     title: "Software Engineer",
     company_name: "Softwarehaus 08EINS AG",
     icon: starbucks,
     iconBg: "#fff",
-    date: "February 2019 - August 2023",
+    date: "August 2019 - August 2023",
     points: [
-      "Entwicklung von Webanwendungen unter Verwendung von PHP und Wordpress.",
-      "Zusammenarbeit mit Teams, einschließlich Designern, Produktmanagern und anderen Entwicklern, um qualitativ hochwertige Produkte zu erstellen.",
-      "Umsetzung von responsive Design und Gewährleistung der Kompatibilität mit verschiedenen Browsern.",
-      "Teilnahme an Code-Reviews und Bereitstellung konstruktiven Feedbacks für andere Entwickler.",
+      "Entwicklung und Wartung von WordPress-Plugins und PHP-basierten Webanwendungen.",
+      "Durchführung von Website- und PHP-Migrationen sowie Anpassung und Verwaltung von DNS-Einträgen.",
+      "Erstellung eines Raumverwaltungssystems mit Integration von Microsoft-Kalendern.",
+      "Erstellung einer Sonos-App für zentralen Zugriff auf die Sonos-SoundBoxen.",
+      "Betreuung der MINT-Academy als Lehrperson und Vermittlung von IT-Wissen an Schüler.",
+      "Tiefgehende Arbeit mit Atlassian-Produkten wie Jira, Confluence und Bitbucket.",
     ],
-  },
-];
-
-const testimonials = [
-  {
-    testimonial:
-      "I thought it was impossible to make a website as beautiful as our product, but Rick proved me wrong.",
-    name: "Sara Lee",
-    designation: "CFO",
-    company: "Acme Co",
-    image: "https://randomuser.me/api/portraits/women/4.jpg",
+    company_link: "https://softwarehaus.net/",
   },
   {
-    testimonial:
-      "I've never met a web developer who truly cares about their clients' success like Rick does.",
-    name: "Chris Brown",
-    designation: "COO",
-    company: "DEF Corp",
-    image: "https://randomuser.me/api/portraits/men/5.jpg",
-  },
-  {
-    testimonial:
-      "After Rick optimized our website, our traffic increased by 50%. We can't thank them enough!",
-    name: "Lisa Wang",
-    designation: "CTO",
-    company: "456 Enterprises",
-    image: "https://randomuser.me/api/portraits/women/6.jpg",
+    title: "Praktikant Softwareentwicklung",
+    company_name: "Softwarehaus 08EINS AG",
+    icon: starbucks,
+    iconBg: "#fff",
+    date: "February 2019 - August 2019",
+    points: [
+      "Einstieg in die Softwareentwicklung.",
+      "Unterstützung von Teams bei der Entwicklung und Pflege von bestehenden Webanwendungen.",
+    ],
+    company_link: "https://softwarehaus.net/",
   },
 ];
 
@@ -164,9 +202,51 @@ const projects = [
         color: "pink-text-gradient",
       },
     ],
-    image: carrent,
+    image: sonos,
     source_code_link: "https://github.com/carcavallo/sonosphere",
+  },
+  {
+    name: "Flip-Flop-App",
+    description:
+      "A WebApp to calculate FlipFlopScores for medical use, developed with PHP and React.",
+    tags: [
+      {
+        name: "php",
+        color: "green-text-gradient",
+      },
+      {
+        name: "api",
+        color: "pink-text-gradient",
+      },
+      {
+        name: "react",
+        color: "blue-text-gradient",
+      },
+    ],
+    image: flipflopapp,
+    source_code_link: "https://github.com/carcavallo/webappwizard",
+  },
+  {
+    name: "Event-Management-System",
+    description:
+      "A platform for managing events and applications for DJs, featuring React frontend and PHP backend.",
+    tags: [
+      {
+        name: "php",
+        color: "green-text-gradient",
+      },
+      {
+        name: "api",
+        color: "pink-text-gradient",
+      },
+      {
+        name: "react",
+        color: "blue-text-gradient",
+      },
+    ],
+    image: djselect,
+    source_code_link: "https://github.com/carcavallo/djselect",
   },
 ];
 
-export { services, technologies, experiences, testimonials, projects };
+export { services, technologies, experiences, projects };

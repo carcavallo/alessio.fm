@@ -8,8 +8,9 @@ const Hero = () => {
 
   return (
     <section className={`relative w-full h-screen mx-auto`}>
+      {/* Main Content */}
       <div
-        className={`absolute inset-0 top-[120px]  max-w-7xl mx-auto ${
+        className={`absolute inset-0 top-[120px] max-w-7xl mx-auto ${
           styles.paddingX
         } flex ${isDesktop ? "flex-row" : "flex-col"} items-${
           isDesktop ? "start" : "center"
@@ -28,17 +29,22 @@ const Hero = () => {
               isDesktop ? "" : "mb-4"
             }`}
           >
-            <span className="text-[#915EFF]">Alessio Carcavallo</span>
+            <span className="text-[#BEBEBE] hover:text-secondary transition-colors duration-300">
+              Alessio Carcavallo
+            </span>
           </h1>
           <p
-            className={`${styles.heroSubText} mt-2 text-white-100 text-center`}
+            className={`${styles.heroSubText} mt-2 text-white-100 text-center hover:text-secondary transition-colors duration-300`}
           >
-            Always thinking about improvement
+            IT Enthusiast | Application Developer | Site Reliability Engineer
           </p>
         </div>
       </div>
 
-      {isDesktop}
+      {isDesktop &&       
+      <div className="absolute inset-0 top-0">
+        <ComputersCanvas />
+      </div>}
 
       <div className="absolute xs:bottom-10 bottom-32 w-full flex justify-center items-center">
         <a href="#about">
