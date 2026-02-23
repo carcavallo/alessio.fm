@@ -1,23 +1,16 @@
-import React from "react";
-import Tilt from "react-parallax-tilt";
-import { motion } from "framer-motion";
+import React from 'react';
+import Tilt from 'react-parallax-tilt';
+import { motion } from 'framer-motion';
 
-import { styles } from "../styles";
-import { github } from "../assets";
-import { SectionWrapper } from "../hoc";
-import { projects } from "../constants";
-import { fadeIn, textVariant } from "../utils/motion";
+import { styles } from '../styles';
+import { github } from '../assets';
+import { SectionWrapper } from '../hoc';
+import { projects } from '../constants';
+import { fadeIn, textVariant } from '../utils/motion';
 
-const ProjectCard = ({
-  index,
-  name,
-  description,
-  tags,
-  image,
-  source_code_link,
-}) => {
+const ProjectCard = ({ index, name, description, tags, image, source_code_link }) => {
   return (
-    <motion.div variants={fadeIn("up", "spring", index * 0.5, 0.75)}>
+    <motion.div variants={fadeIn('up', 'spring', index * 0.5, 0.75)}>
       <Tilt
         options={{
           max: 45,
@@ -27,22 +20,14 @@ const ProjectCard = ({
         className="bg-tertiary p-5 rounded-2xl sm:w-[360px] w-full"
       >
         <div className="relative w-full h-[230px]">
-          <img
-            src={image}
-            alt="project_image"
-            className="w-full h-full object-cover rounded-2xl"
-          />
+          <img src={image} alt="project_image" className="w-full h-full object-cover rounded-2xl" />
 
           <div className="absolute inset-0 flex justify-end m-3 card-img_hover">
             <div
-              onClick={() => window.open(source_code_link, "_blank")}
+              onClick={() => window.open(source_code_link, '_blank')}
               className="black-gradient w-10 h-10 rounded-full flex justify-center items-center cursor-pointer"
             >
-              <img
-                src={github}
-                alt="source code"
-                className="w-1/2 h-1/2 object-contain"
-              />
+              <img src={github} alt="source code" className="w-1/2 h-1/2 object-contain" />
             </div>
           </div>
         </div>
@@ -54,10 +39,7 @@ const ProjectCard = ({
 
         <div className="mt-4 flex flex-wrap gap-2">
           {tags.map((tag) => (
-            <p
-              key={`${name}-${tag.name}`}
-              className={`text-[14px] ${tag.color}`}
-            >
+            <p key={`${name}-${tag.name}`} className={`text-[14px] ${tag.color}`}>
               #{tag.name}
             </p>
           ))}
@@ -77,14 +59,13 @@ const Works = () => {
 
       <div className="w-full flex">
         <motion.p
-          variants={fadeIn("", "", 0.1, 1)}
+          variants={fadeIn('', '', 0.1, 1)}
           className="mt-3 text-secondary text-[17px] max-w-3xl leading-[30px]"
         >
-          Die unten aufgeführten Projekte geben Ihnen einen Einblick in meine
-          Fähigkeiten und Erfahrungen. Jedes Projekt wird kurz beschrieben und
-          enthält Links zu den Code-Repositories sowie zu Live-Demos. Sie
-          zeigen, wie ich komplexe Probleme löse, mit verschiedenen Technologien
-          umgehe und Projekte effizient verwalte.
+          Die unten aufgeführten Projekte geben Ihnen einen Einblick in meine Fähigkeiten und
+          Erfahrungen. Jedes Projekt wird kurz beschrieben und enthält Links zu den
+          Code-Repositories sowie zu Live-Demos. Sie zeigen, wie ich komplexe Probleme löse, mit
+          verschiedenen Technologien umgehe und Projekte effizient verwalte.
         </motion.p>
       </div>
 
@@ -97,4 +78,4 @@ const Works = () => {
   );
 };
 
-export default SectionWrapper(Works, "projects");
+export default SectionWrapper(Works, 'projects');

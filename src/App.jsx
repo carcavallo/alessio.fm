@@ -1,4 +1,4 @@
-import { BrowserRouter } from "react-router-dom";
+import { BrowserRouter } from 'react-router-dom';
 
 import {
   About,
@@ -11,7 +11,7 @@ import {
   Works,
   Footer,
   StarsCanvas,
-} from "./components";
+} from './components';
 
 const App = () => {
   return (
