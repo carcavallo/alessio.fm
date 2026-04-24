@@ -19,8 +19,14 @@ const Footer = () => {
         </p>
 
         <div className="flex space-x-4 mt-4 md:mt-0">
-          <a href="mailto:alessio@alessio.fm" className="text-secondary hover:text-gray-400">
+          <a href="mailto:me@alessio.fm" className="text-secondary hover:text-gray-400">
             Contact
+          </a>
+          <a href="https://github.com/carcavallo" target="_blank" rel="noopener noreferrer" className="text-secondary hover:text-gray-400">
+            GitHub
+          </a>
+          <a href="https://alpinsignals.com" target="_blank" rel="noopener noreferrer" className="text-secondary hover:text-gray-400">
+            Alpin Signals
           </a>
         </div>
       </motion.div>

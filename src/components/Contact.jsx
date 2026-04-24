@@ -39,7 +39,7 @@ const Contact = () => {
           from_name: form.name,
           to_name: 'Alessio Carcavallo',
           from_email: form.email,
-          to_email: 'info@alessio.fm',
+          to_email: 'me@alessio.fm',
           message: form.message,
         },
         'iE6wApo1dOmedbaC8'

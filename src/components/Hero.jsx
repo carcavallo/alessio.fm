@@ -34,7 +34,7 @@ const Hero = () => {
           <p
             className={`${styles.heroSubText} mt-2 text-white-100 text-center hover:text-secondary transition-colors duration-300`}
           >
-            IT Enthusiast | Application Developer | Site Reliability Engineer
+            Site Reliability Engineer | Daytrader | Co-Founder Alpin Signals
           </p>
         </div>
       </div>

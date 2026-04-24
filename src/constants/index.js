@@ -40,28 +40,28 @@ export const navLinks = [
     id: 'work',
     title: 'Work',
   },
+  {
+    id: 'contact',
+    title: 'Contact',
+  },
 ];
 
 const services = [
   {
-    title: 'Web Developer',
+    title: 'Site Reliability Engineer',
+    icon: creator,
+  },
+  {
+    title: 'Full-Stack Developer',
     icon: web,
   },
   {
-    title: 'Frontend Developer',
+    title: 'Daytrader',
     icon: mobile,
   },
   {
-    title: 'Backend Developer',
+    title: 'Entrepreneur',
     icon: backend,
-  },
-  {
-    title: 'System Engineer',
-    icon: creator,
-  },
-  {
-    title: 'Site Reliability Engineer',
-    icon: creator,
   },
 ];
 
@@ -114,11 +114,25 @@ const technologies = [
 
 const experiences = [
   {
+    title: 'Co-Founder & Trader',
+    company_name: 'Alpin Signals',
+    icon: web,
+    iconBg: '#c9a84c',
+    date: 'April 2025 - Present',
+    points: [
+      'Aufbau einer Trading-Community mit Fokus auf US-Indizes (NQ/ES) und Gold.',
+      'Entwicklung eines Telegram-Bots für automatisierte Session-Analysen und Marktdaten.',
+      'Coaching und Mentoring von Tradern im ICT/SMC-Stil.',
+      'Technische Infrastruktur: Cloudflare Pages, Node.js API, Stripe Integration.',
+    ],
+    company_link: 'https://alpinsignals.com',
+  },
+  {
     title: 'Site Reliability Engineer',
     company_name: 'Inventx AG',
     icon: inventx,
     iconBg: 'white',
-    date: 'Februar 2024 - Now',
+    date: 'Februar 2024 - Present',
     points: [
       'Überwachung, Wartung und Migration von IT-Systemen und Infrastrukturen zur Sicherstellung der Hochverfügbarkeit.',
       'Automatisierung von Betriebsprozessen mit Ansible zur Effizienzsteigerung und Fehlerreduktion.',
@@ -131,7 +145,7 @@ const experiences = [
     company_name: 'Schweizer Armee',
     icon: army,
     iconBg: 'red',
-    date: 'July 2024 - November 2024',
+    date: 'Juli 2024 - November 2024',
     points: [
       'Absolvierung der Rekrutenschule als Informatikpionier.',
       'Erlernen von IT-spezifischen Fähigkeiten in einem militärischen Umfeld.',
@@ -184,6 +198,27 @@ const experiences = [
 ];
 
 const projects = [
+  {
+    name: 'Alpin Signals',
+    description:
+      'Trading-Community-Plattform mit automatisierten Marktanalysen, Telegram-Bot, Stripe-Payment und Member-Management.',
+    tags: [
+      {
+        name: 'node.js',
+        color: 'blue-text-gradient',
+      },
+      {
+        name: 'telegram-api',
+        color: 'green-text-gradient',
+      },
+      {
+        name: 'cloudflare',
+        color: 'pink-text-gradient',
+      },
+    ],
+    image: web,
+    source_code_link: 'https://alpinsignals.com',
+  },
   {
     name: 'Sonosphere',
     description:
