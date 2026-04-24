@@ -9,6 +9,8 @@ import { projects } from '../constants';
 import { fadeIn, textVariant } from '../utils/motion';
 
 const ProjectCard = ({ index, name, description, tags, image, source_code_link }) => {
+  const isGitHub = source_code_link.includes('github.com');
+  
   return (
     <motion.div variants={fadeIn('up', 'spring', index * 0.5, 0.75)}>
       <Tilt
@@ -27,7 +29,24 @@ const ProjectCard = ({ index, name, description, tags, image, source_code_link }
               onClick={() => window.open(source_code_link, '_blank')}
               className="black-gradient w-10 h-10 rounded-full flex justify-center items-center cursor-pointer"
             >
-              <img src={github} alt="source code" className="w-1/2 h-1/2 object-contain" />
+              {isGitHub ? (
+                <img src={github} alt="source code" className="w-1/2 h-1/2 object-contain" />
+              ) : (
+                <svg
+                  className="w-5 h-5 text-white"
+                  fill="none"
+                  stroke="currentColor"
+                  viewBox="0 0 24 24"
+                  xmlns="http://www.w3.org/2000/svg"
+                >
+                  <path
+                    strokeLinecap="round"
+                    strokeLinejoin="round"
+                    strokeWidth={2}
+                    d="M10 6H6a2 2 0 00-2 2v10a2 2 0 002 2h10a2 2 0 002-2v-4M14 4h6m0 0v6m0-6L10 14"
+                  />
+                </svg>
+              )}
             </div>
           </div>
         </div>
@@ -62,10 +81,7 @@ const Works = () => {
           variants={fadeIn('', '', 0.1, 1)}
           className="mt-3 text-secondary text-[17px] max-w-3xl leading-[30px]"
         >
-          Die unten aufgeführten Projekte geben Ihnen einen Einblick in meine Fähigkeiten und
-          Erfahrungen. Jedes Projekt wird kurz beschrieben und enthält Links zu den
-          Code-Repositories sowie zu Live-Demos. Sie zeigen, wie ich komplexe Probleme löse, mit
-          verschiedenen Technologien umgehe und Projekte effizient verwalte.
+          Hier sind einige meiner Projekte. Von Trading-Plattformen über Kunden-Websites bis zu Open-Source — jedes Projekt zeigt einen anderen Aspekt meiner Arbeit.
         </motion.p>
       </div>
 

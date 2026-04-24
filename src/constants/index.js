@@ -29,6 +29,8 @@ import {
   flipflopapp,
   djselect,
   sonos,
+  alpinsignals,
+  urklang,
 } from '../assets';
 
 export const navLinks = [
@@ -216,71 +218,29 @@ const projects = [
         color: 'pink-text-gradient',
       },
     ],
-    image: web,
+    image: alpinsignals,
     source_code_link: 'https://alpinsignals.com',
   },
   {
-    name: 'Sonosphere',
+    name: 'Urklang Kinesiologie',
     description:
-      'WebApp for remote controlling Sonos Box via Sonos API using Node.js backend and React frontend.',
+      'Professionelle Website für eine Kinesiologie-Praxis. Modernes Design mit sanften Farben, responsive Layout und Kontaktformular.',
     tags: [
       {
-        name: 'react',
+        name: 'webdesign',
         color: 'blue-text-gradient',
       },
       {
-        name: 'node.js',
-        color: 'blue-text-gradient',
-      },
-      {
-        name: 'tailwind',
-        color: 'pink-text-gradient',
-      },
-    ],
-    image: sonos,
-    source_code_link: 'https://github.com/carcavallo/sonosphere',
-  },
-  {
-    name: 'Flip-Flop-App',
-    description:
-      'A WebApp to calculate FlipFlopScores for medical use, developed with PHP and React.',
-    tags: [
-      {
-        name: 'php',
+        name: 'freelance',
         color: 'green-text-gradient',
       },
       {
-        name: 'api',
+        name: 'responsive',
         color: 'pink-text-gradient',
       },
-      {
-        name: 'react',
-        color: 'blue-text-gradient',
-      },
     ],
-    image: flipflopapp,
-    source_code_link: 'https://github.com/carcavallo/webappwizard',
-  },
-  {
-    name: 'Event-Management-System',
-    description:
-      'A platform for managing events and applications for DJs, featuring React frontend and PHP backend.',
-    tags: [
-      {
-        name: 'php',
-        color: 'green-text-gradient',
-      },
-      {
-        name: 'api',
-        color: 'pink-text-gradient',
-      },
-      {
-        name: 'react',
-        color: 'blue-text-gradient',
-      },
-    ],
-    image: djselect,
-    source_code_link: 'https://github.com/carcavallo/djselect',
+    image: urklang,
+    source_code_link: 'https://urklang-kinesiologie.ch',
   },
 ];
 

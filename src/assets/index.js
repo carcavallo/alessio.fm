@@ -35,6 +35,8 @@ import tripguide from "./tripguide.png";
 import djselect from "./djselect.png";
 import flipflopapp from "./flipflopscore.png";
 import sonos from "./sonos.png";
+import alpinsignals from "./alpinsignals.png";
+import urklang from "./urklang.png";
 
 export {
   logo,
@@ -71,4 +73,6 @@ export {
   djselect,
   flipflopapp,
   sonos,
+  alpinsignals,
+  urklang,
 };
