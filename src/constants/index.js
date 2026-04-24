@@ -251,15 +251,45 @@ const projects = [
 
 const offerings = [
   {
-    title: 'Web Development',
-    description: 'Professionelle Websites und Web-Applikationen. Von der Planung über das Design bis zur Umsetzung — responsive, modern und performant.',
-    features: ['Landing Pages', 'Business Websites', 'Web Apps', 'E-Commerce'],
-    cta: { text: 'Anfrage senden', link: 'mailto:contact@alessio.fm' },
+    title: 'Websites & Landing Pages',
+    description: 'Dein Webauftritt — professionell, modern und mobilfreundlich. Vom einfachen One-Pager bis zur kompletten Business-Website mit CMS, SEO-Optimierung und Analytics.',
+    features: ['One-Pager / Landing Pages', 'Business Websites', 'Portfolio-Seiten', 'E-Commerce / Shops', 'SEO & Analytics'],
+    price: 'Ab CHF 500',
+    cta: { text: 'Projekt anfragen', link: 'mailto:contact@alessio.fm?subject=Website%20Anfrage' },
+  },
+  {
+    title: 'Web-Applikationen & APIs',
+    description: 'Massgeschneiderte Applikationen für dein Business. Von einfachen Tools und Dashboards bis hin zu komplexen Plattformen mit Datenbanken, User-Management und API-Integrationen.',
+    features: ['Custom Web Apps', 'REST & GraphQL APIs', 'Dashboards & Admin-Panels', 'Datenbank-Design', 'Third-Party Integrationen', 'Automatisierungen'],
+    price: 'Ab CHF 2\'000',
+    cta: { text: 'Projekt anfragen', link: 'mailto:contact@alessio.fm?subject=App%20Entwicklung%20Anfrage' },
+  },
+  {
+    title: 'Mobile & Desktop Apps',
+    description: 'Kleinere bis mittlere Applikationen für iOS, Android oder Desktop. Cross-Platform mit React Native oder Electron — ein Codebase, alle Plattformen.',
+    features: ['iOS & Android Apps', 'Desktop-Applikationen', 'Cross-Platform', 'App Store Deployment', 'Push Notifications'],
+    price: 'Ab CHF 3\'000',
+    cta: { text: 'Projekt anfragen', link: 'mailto:contact@alessio.fm?subject=App%20Anfrage' },
+  },
+  {
+    title: 'IT-Support & Technik-Hilfe',
+    description: 'Probleme mit Laptop, Handy oder anderen Geräten? Ich helfe vor Ort oder remote — unkompliziert und ohne Fachchinesisch. Egal ob Einrichtung, Reparatur oder einfach Fragen.',
+    features: ['Laptop & PC Setup', 'Handy-Einrichtung & Transfer', 'WLAN & Netzwerk', 'Software-Installation', 'Datensicherung & Recovery', 'Smart Home Setup'],
+    price: 'CHF 80/h (vor Ort Region GR) · CHF 50/h (remote)',
+    cta: { text: 'Support anfragen', link: 'mailto:contact@alessio.fm?subject=IT%20Support%20Anfrage' },
+  },
+  {
+    title: 'Hosting & Wartung',
+    description: 'Deine Website oder App läuft — aber wer kümmert sich darum? Ich übernehme Hosting, Updates, Backups und Monitoring. Damit du dich auf dein Business konzentrieren kannst.',
+    features: ['Domain & Hosting Setup', 'SSL-Zertifikate', 'Regelmässige Backups', 'Security Updates', 'Uptime Monitoring', 'Performance-Optimierung'],
+    price: 'Ab CHF 50/Monat',
+    cta: { text: 'Anfrage senden', link: 'mailto:contact@alessio.fm?subject=Hosting%20%26%20Wartung' },
   },
   {
     title: 'Trading Community',
-    description: 'Werde Teil von Alpin Signals — einer Community für ambitionierte Trader mit täglichen Marktanalysen, Live Sessions und 1:1 Coaching.',
-    features: ['Tägliche Analysen', 'Live Sessions', '1:1 Coaching', 'Telegram Community'],
+    description: 'Werde Teil von Alpin Signals — der Schweizer Trading-Community für ambitionierte Trader. Tägliche Marktanalysen, Live Sessions, Discord Voice-Calls und persönliches 1:1 Coaching.',
+    features: ['Tägliche Session-Analysen', 'Live Trading Sessions', '1:1 Coaching', 'Discord & Telegram Community', 'Prop-Firm Beratung'],
+    price: 'CHF 50/Monat · 7 Tage gratis testen',
     cta: { text: 'Zu Alpin Signals', link: 'https://alpinsignals.com' },
   },
 ];

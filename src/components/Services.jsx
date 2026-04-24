@@ -5,29 +5,36 @@ import { offerings } from '../constants';
 import { SectionWrapper } from '../hoc';
 import { fadeIn, textVariant } from '../utils/motion';
 
-const ServiceCard = ({ index, title, description, features, cta }) => (
+const ServiceCard = ({ index, title, description, features, price, cta }) => (
   <motion.div
-    variants={fadeIn('up', 'spring', index * 0.5, 0.75)}
-    className="bg-tertiary p-8 rounded-2xl sm:w-[480px] w-full"
+    variants={fadeIn('up', 'spring', index * 0.3, 0.75)}
+    className="bg-tertiary p-8 rounded-2xl sm:w-[360px] w-full flex flex-col justify-between"
   >
-    <h3 className="text-white font-bold text-[24px] mb-4">{title}</h3>
-    <p className="text-secondary text-[16px] leading-[28px] mb-6">{description}</p>
-    <ul className="flex flex-wrap gap-2 mb-6">
-      {features.map((feature, i) => (
-        <li key={i} className="text-[14px] text-white bg-black-100 px-4 py-2 rounded-full">
-          {feature}
-        </li>
-      ))}
-    </ul>
-    {cta.link.startsWith('#') ? (
-      <a href={cta.link} className="text-[#915EFF] font-medium hover:text-white transition-colors duration-300">
-        {cta.text} →
-      </a>
-    ) : (
-      <a href={cta.link} target="_blank" rel="noopener noreferrer" className="text-[#915EFF] font-medium hover:text-white transition-colors duration-300">
-        {cta.text} →
-      </a>
-    )}
+    <div>
+      <h3 className="text-white font-bold text-[22px] mb-3">{title}</h3>
+      <p className="text-secondary text-[15px] leading-[26px] mb-5">{description}</p>
+      <ul className="flex flex-wrap gap-2 mb-5">
+        {features.map((feature, i) => (
+          <li key={i} className="text-[13px] text-white bg-black-100 px-3 py-1.5 rounded-full">
+            {feature}
+          </li>
+        ))}
+      </ul>
+    </div>
+    <div>
+      {price && (
+        <p className="text-[#915EFF] font-semibold text-[15px] mb-4">{price}</p>
+      )}
+      {cta.link.startsWith('mailto:') || cta.link.startsWith('#') ? (
+        <a href={cta.link} className="inline-block bg-[#915EFF] hover:bg-[#7a4de0] text-white font-medium px-6 py-2.5 rounded-lg transition-all duration-300 text-[14px]">
+          {cta.text} →
+        </a>
+      ) : (
+        <a href={cta.link} target="_blank" rel="noopener noreferrer" className="inline-block bg-[#915EFF] hover:bg-[#7a4de0] text-white font-medium px-6 py-2.5 rounded-lg transition-all duration-300 text-[14px]">
+          {cta.text} →
+        </a>
+      )}
+    </div>
   </motion.div>
 );
 
@@ -38,7 +45,15 @@ const Services = () => {
         <p className={styles.sectionSubText}>Was ich anbiete</p>
         <h2 className={styles.sectionHeadText}>Services</h2>
       </motion.div>
-      <div className="mt-20 flex flex-wrap gap-10 justify-center">
+
+      <motion.p
+        variants={fadeIn('', '', 0.1, 1)}
+        className="mt-4 text-secondary text-[17px] max-w-3xl leading-[30px]"
+      >
+        Von der einfachen Website bis zur komplexen Applikation, vom IT-Support bis zum Trading-Coaching — ich biete massgeschneiderte Lösungen für jedes Budget.
+      </motion.p>
+
+      <div className="mt-16 flex flex-wrap gap-8 justify-center">
         {offerings.map((offering, index) => (
           <ServiceCard key={offering.title} index={index} {...offering} />
         ))}
