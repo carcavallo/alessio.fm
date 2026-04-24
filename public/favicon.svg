@@ -1,0 +1,35 @@
+<svg viewBox="0 0 40 40" xmlns="http://www.w3.org/2000/svg">
+  <defs>
+    <linearGradient id="acGrad" x1="0%" y1="100%" x2="100%" y2="0%">
+      <stop offset="0%" stop-color="#6B3FA0"/>
+      <stop offset="50%" stop-color="#915EFF"/>
+      <stop offset="100%" stop-color="#B88AFF"/>
+    </linearGradient>
+  </defs>
+
+  <!-- Two overlapping chevron peaks — geometric, like Alpin Signals mountain style -->
+  <!-- Left peak (A) -->
+  <polygon points="6,32 16,6 26,32" 
+           fill="none" 
+           stroke="url(#acGrad)" 
+           stroke-width="2" 
+           stroke-linejoin="round"
+           stroke-linecap="round"/>
+  <!-- A crossbar -->
+  <line x1="10.5" y1="23" x2="21.5" y2="23" 
+        stroke="url(#acGrad)" 
+        stroke-width="1.5" 
+        stroke-linecap="round"/>
+
+  <!-- Right peak (overlapping, slightly offset — creates depth) -->
+  <polygon points="16,32 26,6 36,32" 
+           fill="none" 
+           stroke="url(#acGrad)" 
+           stroke-width="2" 
+           stroke-linejoin="round"
+           stroke-linecap="round"
+           opacity="0.6"/>
+
+  <!-- Subtle inner glow dot at apex -->
+  <circle cx="21" cy="6" r="1.5" fill="#915EFF" opacity="0.4"/>
+</svg>
