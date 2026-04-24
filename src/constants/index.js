@@ -190,18 +190,6 @@ const experiences = [
     ],
     company_link: 'https://softwarehaus.net/',
   },
-  {
-    title: 'Praktikant Softwareentwicklung',
-    company_name: 'Softwarehaus 08EINS AG',
-    icon: starbucks,
-    iconBg: '#fff',
-    date: 'February 2019 - August 2019',
-    points: [
-      'Einstieg in die Softwareentwicklung.',
-      'Unterstützung von Teams bei der Entwicklung und Pflege von bestehenden Webanwendungen.',
-    ],
-    company_link: 'https://softwarehaus.net/',
-  },
 ];
 
 const projects = [
