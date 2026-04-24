@@ -11,6 +11,7 @@ import {
   Works,
   Footer,
   StarsCanvas,
+  Services,
 } from './components';
 
 const App = () => {
@@ -25,6 +26,7 @@ const App = () => {
         <Experience />
         <Tech />
         <Works />
+        <Services />
         <div className='relative z-0'>
           <Contact />
         </div>

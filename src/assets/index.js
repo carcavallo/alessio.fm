@@ -28,6 +28,7 @@ import pr24 from "./company/pr24.png";
 import army from "./company/army.jpg";
 import tesla from "./company/tesla.png";
 import inventx from "./company/inventx.jpeg";
+import alpinsignalsCompany from "./company/alpinsignals.jpg";
 
 import carrent from "./carrent.png";
 import jobit from "./jobit.png";
@@ -75,4 +76,5 @@ export {
   sonos,
   alpinsignals,
   urklang,
+  alpinsignalsCompany,
 };

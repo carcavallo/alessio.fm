@@ -9,6 +9,7 @@ import Feedbacks from './Feedbacks';
 import Contact from './Contact';
 import CanvasLoader from './Loader';
 import Footer from './Footer';
+import Services from './Services';
 
 export {
   Hero,
@@ -24,4 +25,5 @@ export {
   EarthCanvas,
   BallCanvas,
   StarsCanvas,
+  Services,
 };

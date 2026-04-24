@@ -31,6 +31,7 @@ import {
   sonos,
   alpinsignals,
   urklang,
+  alpinsignalsCompany,
 } from '../assets';
 
 export const navLinks = [
@@ -41,6 +42,14 @@ export const navLinks = [
   {
     id: 'work',
     title: 'Work',
+  },
+  {
+    id: 'projects',
+    title: 'Projects',
+  },
+  {
+    id: 'services',
+    title: 'Services',
   },
   {
     id: 'contact',
@@ -118,8 +127,8 @@ const experiences = [
   {
     title: 'Co-Founder & Trader',
     company_name: 'Alpin Signals',
-    icon: web,
-    iconBg: '#c9a84c',
+    icon: alpinsignalsCompany,
+    iconBg: '#000000',
     date: 'April 2025 - Present',
     points: [
       'Aufbau einer Trading-Community mit Fokus auf US-Indizes (NQ/ES) und Gold.',
@@ -244,4 +253,19 @@ const projects = [
   },
 ];
 
-export { services, technologies, experiences, projects };
+const offerings = [
+  {
+    title: 'Web Development',
+    description: 'Professionelle Websites und Web-Applikationen. Von der Planung über das Design bis zur Umsetzung — responsive, modern und performant.',
+    features: ['Landing Pages', 'Business Websites', 'Web Apps', 'E-Commerce'],
+    cta: { text: 'Anfrage senden', link: '#contact' },
+  },
+  {
+    title: 'Trading Community',
+    description: 'Werde Teil von Alpin Signals — einer Community für ambitionierte Trader mit täglichen Marktanalysen, Live Sessions und 1:1 Coaching.',
+    features: ['Tägliche Analysen', 'Live Sessions', '1:1 Coaching', 'Telegram Community'],
+    cta: { text: 'Zu Alpin Signals', link: 'https://alpinsignals.com' },
+  },
+];
+
+export { services, technologies, experiences, projects, offerings };

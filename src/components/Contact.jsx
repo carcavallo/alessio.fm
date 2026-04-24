@@ -10,8 +10,8 @@ import { slideIn } from '../utils/motion';
 const Contact = () => {
   const formRef = useRef();
   const [form, setForm] = useState({
-    name: '',
-    email: '',
+    from_name: '',
+    from_email: '',
     message: '',
   });
 
@@ -32,16 +32,10 @@ const Contact = () => {
     setLoading(true);
 
     emailjs
-      .send(
+      .sendForm(
         'service_scdz5c8',
         'template_5uvnl5z',
-        {
-          from_name: form.name,
-          to_name: 'Alessio Carcavallo',
-          from_email: form.email,
-          to_email: 'me@alessio.fm',
-          message: form.message,
-        },
+        formRef.current,
         'iE6wApo1dOmedbaC8'
       )
       .then(
@@ -50,8 +44,8 @@ const Contact = () => {
           alert('Danke für deine Nachricht! Ich melde mich so schnell wie möglich.');
 
           setForm({
-            name: '',
-            email: '',
+            from_name: '',
+            from_email: '',
             message: '',
           });
         },
@@ -71,15 +65,18 @@ const Contact = () => {
         className="flex-[0.75] bg-black-100 p-8 rounded-2xl"
       >
         <p className={styles.sectionSubText}>Kontakt aufnehmen</p>
-        <h3 className={styles.sectionHeadText}>Contact</h3>
+        <h3 className={styles.sectionHeadText}>Kontakt</h3>
 
         <form ref={formRef} onSubmit={handleSubmit} className="mt-12 flex flex-col gap-8">
+          <input type="hidden" name="to_name" value="Alessio Carcavallo" />
+          <input type="hidden" name="to_email" value="me@alessio.fm" />
+
           <label className="flex flex-col">
             <span className="text-white font-medium mb-4">Dein Name</span>
             <input
               type="text"
-              name="name"
-              value={form.name}
+              name="from_name"
+              value={form.from_name}
               onChange={handleChange}
               placeholder="Wie heisst du?"
               className="bg-tertiary py-4 px-6 placeholder:text-secondary text-white rounded-lg outline-none border-none font-medium hover:shadow-lg transition-all"
@@ -89,8 +86,8 @@ const Contact = () => {
             <span className="text-white font-medium mb-4">Deine E-Mail</span>
             <input
               type="email"
-              name="email"
-              value={form.email}
+              name="from_email"
+              value={form.from_email}
               onChange={handleChange}
               placeholder="deine@email.com"
               className="bg-tertiary py-4 px-6 placeholder:text-secondary text-white rounded-lg outline-none border-none font-medium"
@@ -110,7 +107,7 @@ const Contact = () => {
 
           <button
             type="submit"
-            className="bg-tertiary py-3 px-8 rounded-xl outline-none w-fit text-white font-bold shadow-md shadow-primary"
+            className="bg-tertiary py-3 px-8 rounded-xl outline-none w-fit text-white font-bold shadow-md shadow-primary hover:shadow-lg transition-all"
           >
             {loading ? 'Wird gesendet...' : 'Senden'}
           </button>
