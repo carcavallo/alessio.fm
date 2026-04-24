@@ -26,7 +26,7 @@ const Footer = () => {
             Alpin Signals
           </a>
           <a
-            href="mailto:me@alessio.fm"
+            href="mailto:contact@alessio.fm"
             className="text-gray-400 hover:text-white transition-colors duration-300"
           >
             Email

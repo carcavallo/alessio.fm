@@ -1,6 +1,7 @@
 import { motion } from 'framer-motion';
 
 import { styles } from '../styles';
+import { logoAC } from '../assets';
 
 const Hero = () => {
   return (
@@ -30,6 +31,14 @@ const Hero = () => {
         className={`absolute inset-0 top-[120px] max-w-7xl mx-auto ${styles.paddingX} flex flex-col items-center justify-center z-10`}
       >
         <div className="flex flex-col items-center text-center">
+          <motion.img
+            src={logoAC}
+            alt="AC"
+            className="w-20 h-20 mb-6"
+            initial={{ opacity: 0, scale: 0.5 }}
+            animate={{ opacity: 1, scale: 1 }}
+            transition={{ duration: 0.6 }}
+          />
           <motion.h1
             className={`${styles.heroHeadText} text-white mb-4`}
             initial={{ opacity: 0, y: -50 }}
@@ -98,7 +107,7 @@ const Hero = () => {
             </a>
 
             <a
-              href="mailto:me@alessio.fm"
+              href="mailto:contact@alessio.fm"
               className="text-white hover:text-[#915EFF] transition-colors duration-300 flex items-center gap-2"
             >
               <svg

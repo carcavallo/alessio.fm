@@ -1,4 +1,5 @@
 import logo from "./logo.png";
+import logoAC from "./logo-ac.svg";
 import backend from "./backend.png";
 import creator from "./creator.png";
 import mobile from "./mobile.png";
@@ -41,6 +42,7 @@ import urklang from "./urklang.png";
 
 export {
   logo,
+  logoAC,
   backend,
   army,
   creator,

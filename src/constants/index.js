@@ -51,10 +51,6 @@ export const navLinks = [
     id: 'services',
     title: 'Services',
   },
-  {
-    id: 'contact',
-    title: 'Contact',
-  },
 ];
 
 const services = [
@@ -258,7 +254,7 @@ const offerings = [
     title: 'Web Development',
     description: 'Professionelle Websites und Web-Applikationen. Von der Planung über das Design bis zur Umsetzung — responsive, modern und performant.',
     features: ['Landing Pages', 'Business Websites', 'Web Apps', 'E-Commerce'],
-    cta: { text: 'Anfrage senden', link: '#contact' },
+    cta: { text: 'Anfrage senden', link: 'mailto:contact@alessio.fm' },
   },
   {
     title: 'Trading Community',
