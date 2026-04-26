@@ -23,18 +23,8 @@ const ExperienceCard = ({ experience }) => {
         <a href={experience.company_link} target="_blank" rel="noopener noreferrer">
           <motion.div 
             className="flex justify-center items-center w-full h-full"
-            whileHover={{ scale: 1.1 }}
-            animate={{ 
-              boxShadow: [
-                '0 0 0 0 rgba(145, 94, 255, 0)',
-                '0 0 0 8px rgba(145, 94, 255, 0.2)',
-                '0 0 0 0 rgba(145, 94, 255, 0)',
-              ]
-            }}
-            transition={{ 
-              boxShadow: { duration: 2, repeat: Infinity },
-              scale: { duration: 0.3 }
-            }}
+            whileHover={{ scale: 1.15 }}
+            transition={{ scale: { duration: 0.3 } }}
           >
             <img
               src={experience.icon}
