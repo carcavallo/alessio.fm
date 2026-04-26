@@ -4,7 +4,7 @@ const Footer = () => {
   return (
     <footer className="relative bg-tertiary text-white py-4 sm:py-6 mt-8 sm:mt-10">
       {/* Gradient divider line */}
-      <div className="absolute top-0 left-0 right-0 h-[2px] bg-gradient-to-r from-transparent via-purple-500 to-transparent" />
+      <div className="absolute top-0 left-0 right-0 h-[2px]" style={{ background: 'linear-gradient(to right, transparent, #0EA5E9, #06B6D4, transparent)' }} />
       
       <div className="container mx-auto flex flex-col md:flex-row justify-between items-center px-4 sm:px-6">
         <p className="text-xs sm:text-sm text-gray-400">
@@ -19,7 +19,7 @@ const Footer = () => {
             className="text-gray-400 hover:text-white transition-colors duration-300 relative group text-xs sm:text-sm"
           >
             GitHub
-            <span className="absolute bottom-0 left-0 w-0 h-[2px] bg-purple-500 group-hover:w-full transition-all duration-300" />
+            <span className="absolute bottom-0 left-0 w-0 h-[2px] group-hover:w-full transition-all duration-300" style={{ backgroundColor: '#0EA5E9' }} />
           </a>
           <a
             href="https://alpinsignals.com"
@@ -28,14 +28,14 @@ const Footer = () => {
             className="text-gray-400 hover:text-white transition-colors duration-300 relative group text-xs sm:text-sm"
           >
             Alpin Signals
-            <span className="absolute bottom-0 left-0 w-0 h-[2px] bg-purple-500 group-hover:w-full transition-all duration-300" />
+            <span className="absolute bottom-0 left-0 w-0 h-[2px] group-hover:w-full transition-all duration-300" style={{ backgroundColor: '#0EA5E9' }} />
           </a>
           <a
             href="mailto:contact@alessio.fm"
             className="text-gray-400 hover:text-white transition-colors duration-300 relative group text-xs sm:text-sm"
           >
             Email
-            <span className="absolute bottom-0 left-0 w-0 h-[2px] bg-purple-500 group-hover:w-full transition-all duration-300" />
+            <span className="absolute bottom-0 left-0 w-0 h-[2px] group-hover:w-full transition-all duration-300" style={{ backgroundColor: '#0EA5E9' }} />
           </a>
         </div>
       </div>

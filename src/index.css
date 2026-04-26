@@ -28,28 +28,28 @@ html {
 }
 
 ::-webkit-scrollbar-thumb {
-  background: #915EFF;
+  background: #0EA5E9;
   border-radius: 5px;
 }
 
 ::-webkit-scrollbar-thumb:hover {
-  background: #7a4de0;
+  background: #0284C7;
 }
 
 /* For Firefox */
 * {
   scrollbar-width: thin;
-  scrollbar-color: #915EFF #050816;
+  scrollbar-color: #0EA5E9 #050816;
 }
 
 /* Custom selection color */
 ::selection {
-  background-color: #915EFF;
+  background-color: #0EA5E9;
   color: #ffffff;
 }
 
 ::-moz-selection {
-  background-color: #915EFF;
+  background-color: #0EA5E9;
   color: #ffffff;
 }
 
@@ -70,9 +70,9 @@ html {
 }
 
 .violet-gradient {
-  background: #804dee;
-  background: linear-gradient(-90deg, #804dee 0%, rgba(60, 51, 80, 0) 100%);
-  background: -webkit-linear-gradient(-90deg, #804dee 0%, rgba(60, 51, 80, 0) 100%);
+  background: #0EA5E9;
+  background: linear-gradient(-90deg, #0EA5E9 0%, rgba(30, 58, 95, 0) 100%);
+  background: -webkit-linear-gradient(-90deg, #0EA5E9 0%, rgba(30, 58, 95, 0) 100%);
 }
 
 .green-pink-gradient {

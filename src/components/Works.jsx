@@ -78,7 +78,7 @@ const ProjectCard = ({ index, name, description, tags, image, source_code_link }
               className={`text-[12px] sm:text-[14px] ${tag.color} px-2 py-0.5 sm:py-1 rounded relative`}
               whileHover={{ 
                 scale: 1.05,
-                textShadow: '0 0 8px rgba(145, 94, 255, 0.8)'
+                textShadow: '0 0 8px rgba(14, 165, 233, 0.8)'
               }}
             >
               #{tag.name}

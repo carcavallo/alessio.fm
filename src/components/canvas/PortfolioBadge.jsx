@@ -7,7 +7,7 @@ const PortfolioBadge = () => {
           <Float speed={2} rotationIntensity={1.5} floatIntensity={2}>
             <mesh castShadow receiveShadow>
               <circleGeometry args={[1, 32]} />
-              <meshStandardMaterial color="#915EFF" />
+              <meshStandardMaterial color="#0EA5E9" />
               <Decal
                 position={[0, 0, 0]}
                 scale={0.8}

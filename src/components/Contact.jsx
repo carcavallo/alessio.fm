@@ -121,7 +121,7 @@ const Contact = () => {
               value={form.service}
               onChange={handleChange}
               className="bg-tertiary py-3 sm:py-4 px-4 sm:px-6 text-white rounded-lg outline-none border-none font-medium cursor-pointer appearance-none text-[14px] sm:text-base"
-              style={{ backgroundImage: "url(\"data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='12' height='12' viewBox='0 0 12 12'%3E%3Cpath d='M6 8L1 3h10z' fill='%23aaa6c3'/%3E%3C/svg%3E\")", backgroundRepeat: 'no-repeat', backgroundPosition: 'right 16px center' }}
+              style={{ backgroundImage: "url(\"data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='12' height='12' viewBox='0 0 12 12'%3E%3Cpath d='M6 8L1 3h10z' fill='%2394A3B8'/%3E%3C/svg%3E\")", backgroundRepeat: 'no-repeat', backgroundPosition: 'right 16px center' }}
             >
               {serviceOptions.map(opt => (
                 <option key={opt} value={opt} style={{ background: '#151030', color: '#fff' }}>{opt}</option>
@@ -156,7 +156,7 @@ const Contact = () => {
           <button
             type="submit"
             disabled={loading}
-            className="bg-[#915EFF] hover:bg-[#7a4de0] disabled:opacity-50 py-2.5 sm:py-3 px-6 sm:px-8 rounded-xl outline-none w-fit text-white font-bold shadow-md shadow-primary transition-all duration-300 text-[14px] sm:text-base"
+            className="bg-[#0EA5E9] hover:bg-[#0284C7] disabled:opacity-50 py-2.5 sm:py-3 px-6 sm:px-8 rounded-xl outline-none w-fit text-white font-bold shadow-md shadow-primary transition-all duration-300 text-[14px] sm:text-base"
           >
             {loading ? 'Wird gesendet...' : 'Nachricht senden'}
           </button>

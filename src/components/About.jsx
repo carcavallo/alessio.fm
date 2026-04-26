@@ -46,7 +46,7 @@ const StatCard = ({ number, suffix, label, index }) => (
     transition={{ duration: 0.5, delay: index * 0.1 }}
     className="bg-tertiary p-4 sm:p-6 rounded-2xl flex sm:flex-col flex-row items-center gap-3 sm:gap-0 sm:text-center min-w-[120px] sm:min-w-[140px]"
   >
-    <h3 className="text-[#915EFF] text-3xl sm:text-4xl md:text-5xl font-bold sm:mb-2">
+    <h3 className="text-[#38BDF8] text-3xl sm:text-4xl md:text-5xl font-bold sm:mb-2">
       <CountUp end={number} suffix={suffix} />
     </h3>
     <p className="text-secondary text-xs sm:text-sm md:text-base">{label}</p>
@@ -106,14 +106,14 @@ const About = () => {
         Mit {age} Jahren habe ich meine Lehre als Applikationsentwickler abgeschlossen und arbeite heute als Site Reliability Engineer bei der{' '}
         <a
           href="https://www.inventx.ch/"
-          class="font-medium text-blue-600 dark:text-blue-500 hover:underline"
+          class="font-medium text-[#38BDF8] hover:underline"
         >
           Inventx AG
         </a>
         . Neben meiner Haupttätigkeit bin ich aktiver Daytrader und Co-Founder von{' '}
         <a
           href="https://alpinsignals.com"
-          class="font-medium text-blue-600 dark:text-blue-500 hover:underline"
+          class="font-medium text-[#38BDF8] hover:underline"
         >
           Alpin Signals
         </a>{' '}

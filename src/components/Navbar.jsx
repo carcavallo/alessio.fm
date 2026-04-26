@@ -38,7 +38,7 @@ const Navbar = () => {
           >
             <img src={logoAC} alt="AC" className="w-8 h-8 sm:w-9 sm:h-9 object-contain" />
             <p className="text-white text-[16px] sm:text-[18px] font-bold cursor-pointer">
-              alessio<span className="text-[#915EFF]">.fm</span>
+              alessio<span className="text-[#0EA5E9]">.fm</span>
             </p>
           </Link>
 
