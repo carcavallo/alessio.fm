@@ -39,10 +39,10 @@ const Footer = () => {
           <div>
             <h4 className="text-white font-semibold text-[14px] mb-4">Legal</h4>
             <div className="flex flex-col gap-2.5">
-              <span className="text-[#94A3B8] text-[13px]">Alessio Carcavallo</span>
-              <span className="text-[#94A3B8] text-[13px]">Innerdorf 1</span>
-              <span className="text-[#94A3B8] text-[13px]">7408 Cazis, Schweiz</span>
-              <a href="mailto:me@alessio.fm" className="text-[#94A3B8] text-[13px] hover:text-white transition-colors">me@alessio.fm</a>
+              <a href="/impressum" className="text-[#94A3B8] text-[13px] hover:text-white transition-colors">Impressum</a>
+              <a href="/datenschutz" className="text-[#94A3B8] text-[13px] hover:text-white transition-colors">Datenschutz</a>
+              <a href="/agb" className="text-[#94A3B8] text-[13px] hover:text-white transition-colors">AGB</a>
+              <a href="/risikohinweis" className="text-[#94A3B8] text-[13px] hover:text-white transition-colors">Risikohinweis</a>
             </div>
           </div>
 
@@ -52,7 +52,6 @@ const Footer = () => {
             <div className="flex flex-col gap-2.5">
               <a href="https://github.com/carcavallo" target="_blank" rel="noopener noreferrer" className="text-[#94A3B8] text-[13px] hover:text-white transition-colors">GitHub</a>
               <a href="https://alpinsignals.com" target="_blank" rel="noopener noreferrer" className="text-[#94A3B8] text-[13px] hover:text-white transition-colors">Alpin Signals</a>
-              <a href="https://linkedin.com/in/alessio-carcavallo" target="_blank" rel="noopener noreferrer" className="text-[#94A3B8] text-[13px] hover:text-white transition-colors">LinkedIn</a>
             </div>
           </div>
         </div>
