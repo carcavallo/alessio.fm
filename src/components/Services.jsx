@@ -9,10 +9,12 @@ const ServiceCard = ({ index, title, description, features, price, cta }) => {
   const handleClick = (e) => {
     if (cta.link.startsWith('#contact')) {
       e.preventDefault();
+      // Extract service name from the title
+      window.dispatchEvent(new CustomEvent('selectService', { detail: { service: title } }));
+      // Smooth scroll to contact
       const contactSection = document.getElementById('contact');
       if (contactSection) {
         contactSection.scrollIntoView({ behavior: 'smooth' });
-        window.location.hash = cta.link;
       }
     }
   };

@@ -23,18 +23,30 @@ const Contact = () => {
     message: '',
   });
   const [loading, setLoading] = useState(false);
-  const [status, setStatus] = useState(null); // 'success' | 'error' | null
+  const [status, setStatus] = useState(null);
 
-  // Read service from URL hash params (e.g. #contact?service=Web%20Development)
+  // Listen for service selection from Services component
   useEffect(() => {
+    const handleServiceSelect = (e) => {
+      if (e.detail?.service && serviceOptions.includes(e.detail.service)) {
+        setForm(prev => ({ ...prev, service: e.detail.service }));
+      }
+    };
+    window.addEventListener('selectService', handleServiceSelect);
+
+    // Also check URL hash on mount
     const hash = window.location.hash;
     if (hash.includes('service=')) {
-      const params = new URLSearchParams(hash.split('?')[1]);
-      const svc = params.get('service');
-      if (svc && serviceOptions.includes(svc)) {
-        setForm(prev => ({ ...prev, service: svc }));
-      }
+      try {
+        const params = new URLSearchParams(hash.split('?')[1]);
+        const svc = params.get('service');
+        if (svc && serviceOptions.includes(svc)) {
+          setForm(prev => ({ ...prev, service: svc }));
+        }
+      } catch {}
     }
+
+    return () => window.removeEventListener('selectService', handleServiceSelect);
   }, []);
 
   const handleChange = (e) => {
@@ -112,7 +124,7 @@ const Contact = () => {
               style={{ backgroundImage: "url(\"data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='12' height='12' viewBox='0 0 12 12'%3E%3Cpath d='M6 8L1 3h10z' fill='%23aaa6c3'/%3E%3C/svg%3E\")", backgroundRepeat: 'no-repeat', backgroundPosition: 'right 16px center' }}
             >
               {serviceOptions.map(opt => (
-                <option key={opt} value={opt}>{opt}</option>
+                <option key={opt} value={opt} style={{ background: '#151030', color: '#fff' }}>{opt}</option>
               ))}
             </select>
           </label>
@@ -137,7 +149,7 @@ const Contact = () => {
           )}
           {status === 'error' && (
             <div className="bg-red-900/30 border border-red-500/30 text-red-400 px-4 py-3 rounded-lg text-[14px]">
-              ❌ Etwas ist schiefgelaufen. Bitte versuche es nochmal oder schreib direkt an contact@alessio.fm
+              ❌ Etwas ist schiefgelaufen. Bitte versuche es nochmal oder schreib direkt an me@alessio.fm
             </div>
           )}
 

@@ -88,7 +88,7 @@ export async function onRequestPost(context) {
       headers: { Authorization: `Bearer ${resendKey}`, 'Content-Type': 'application/json' },
       body: JSON.stringify({
         from: 'alessio.fm <noreply@alpinsignals.com>',
-        to: ['contact@alessio.fm'],
+        to: ['me@alessio.fm'],
         reply_to: email,
         subject: `Neue Anfrage: ${service || 'Kontakt'} — ${name}`,
         html: adminEmailHtml({ name, email, service, message }),
@@ -101,6 +101,7 @@ export async function onRequestPost(context) {
       headers: { Authorization: `Bearer ${resendKey}`, 'Content-Type': 'application/json' },
       body: JSON.stringify({
         from: 'Alessio Carcavallo <noreply@alpinsignals.com>',
+        reply_to: 'info@alessio.fm',
         to: [email],
         subject: 'Deine Anfrage bei alessio.fm ✅',
         html: confirmationEmailHtml({ name, service }),
