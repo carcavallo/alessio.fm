@@ -44,12 +44,12 @@ const StatCard = ({ number, suffix, label, index }) => (
     whileInView={{ opacity: 1, y: 0 }}
     viewport={{ once: true }}
     transition={{ duration: 0.5, delay: index * 0.1 }}
-    className="bg-tertiary p-6 rounded-2xl text-center min-w-[140px]"
+    className="bg-tertiary p-4 sm:p-6 rounded-2xl flex sm:flex-col flex-row items-center gap-3 sm:gap-0 sm:text-center min-w-[120px] sm:min-w-[140px]"
   >
-    <h3 className="text-[#915EFF] text-4xl sm:text-5xl font-bold mb-2">
+    <h3 className="text-[#915EFF] text-3xl sm:text-4xl md:text-5xl font-bold sm:mb-2">
       <CountUp end={number} suffix={suffix} />
     </h3>
-    <p className="text-secondary text-sm sm:text-base">{label}</p>
+    <p className="text-secondary text-xs sm:text-sm md:text-base">{label}</p>
   </motion.div>
 );
 
@@ -79,11 +79,11 @@ const ServiceCard = ({ index, title, icon }) => (
           scale: 1,
           speed: 450,
         }}
-        className="bg-tertiary rounded-[20px] py-5 px-12 min-h-[280px] flex justify-evenly items-center flex-col"
+        className="bg-tertiary rounded-[20px] py-4 px-8 sm:py-5 sm:px-12 min-h-[200px] sm:min-h-[280px] flex justify-evenly items-center flex-col"
       >
-        <img src={icon} alt="web-development" className="w-16 h-16 object-contain" />
+        <img src={icon} alt="web-development" className="w-12 h-12 sm:w-16 sm:h-16 object-contain" />
 
-        <h3 className="text-white text-[20px] font-bold text-center">{title}</h3>
+        <h3 className="text-white text-[17px] sm:text-[20px] font-bold text-center">{title}</h3>
       </div>
     </motion.div>
   </Tilt>
@@ -130,13 +130,13 @@ const About = () => {
       </motion.p>
 
       {/* Stats Cards */}
-      <div className="mt-12 flex flex-wrap gap-6 justify-center">
+      <div className="mt-8 sm:mt-12 flex flex-wrap gap-4 sm:gap-6 justify-center">
         <StatCard number={5} suffix="+" label="Jahre Erfahrung" index={0} />
         <StatCard number={50} suffix="+" label="Projekte" index={1} />
         <StatCard number={10} suffix="+" label="Kunden" index={2} />
       </div>
 
-      <div className="mt-16 flex flex-wrap gap-10">
+      <div className="mt-10 sm:mt-16 grid grid-cols-2 sm:flex sm:flex-wrap gap-5 sm:gap-10">
         {services.map((service, index) => (
           <ServiceCard key={service.title} index={index} {...service} />
         ))}

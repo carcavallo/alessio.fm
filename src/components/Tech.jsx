@@ -8,11 +8,11 @@ const Tech = () => {
   const [hoveredTech, setHoveredTech] = useState(null);
 
   return (
-    <div className="flex flex-row flex-wrap justify-center gap-10">
+    <div className="flex flex-row flex-wrap justify-center gap-4 sm:gap-10">
       {technologies.map((technology, index) => (
         <motion.div
           key={technology.name}
-          className="w-28 h-28 flex items-center justify-center relative group"
+          className="w-16 h-16 sm:w-28 sm:h-28 flex items-center justify-center relative group"
           initial={{ opacity: 0, scale: 0 }}
           whileInView={{ opacity: 1, scale: 1 }}
           viewport={{ once: true }}
@@ -36,9 +36,9 @@ const Tech = () => {
             />
           </div>
           
-          {/* Tooltip */}
+          {/* Tooltip - hidden on mobile */}
           <motion.div
-            className="absolute -bottom-8 left-1/2 transform -translate-x-1/2 bg-purple-600 text-white text-xs px-3 py-1 rounded-full whitespace-nowrap pointer-events-none"
+            className="hidden sm:block absolute -bottom-8 left-1/2 transform -translate-x-1/2 bg-purple-600 text-white text-xs px-3 py-1 rounded-full whitespace-nowrap pointer-events-none"
             initial={{ opacity: 0, y: -5 }}
             animate={{ 
               opacity: hoveredTech === index ? 1 : 0,

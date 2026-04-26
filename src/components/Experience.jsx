@@ -36,19 +36,19 @@ const ExperienceCard = ({ experience }) => {
       }
     >
       <div>
-        <h3 className="text-white text-[24px] font-bold">{experience.title}</h3>
-        <p className="text-secondary text-[16px] font-semibold" style={{ margin: 0 }}>
+        <h3 className="text-white text-[20px] sm:text-[24px] font-bold">{experience.title}</h3>
+        <p className="text-secondary text-[14px] sm:text-[16px] font-semibold" style={{ margin: 0 }}>
           <a href={experience.company_link} target="_blank" rel="noopener noreferrer">
             {experience.company_name}
           </a>
         </p>
       </div>
 
-      <ul className="mt-5 list-disc ml-5 space-y-2">
+      <ul className="mt-4 sm:mt-5 list-disc ml-4 sm:ml-5 space-y-1.5 sm:space-y-2">
         {experience.points.map((point, index) => (
           <motion.li
             key={`experience-point-${index}`}
-            className="text-white-100 text-[14px] pl-1 tracking-wider"
+            className="text-white-100 text-[13px] sm:text-[14px] pl-1 tracking-wider"
             initial={{ opacity: 0, x: -20 }}
             whileInView={{ opacity: 1, x: 0 }}
             viewport={{ once: true }}
@@ -70,7 +70,7 @@ const Experience = () => {
         <h2 className={`${styles.sectionHeadText} text-center`}>Work Experience</h2>
       </motion.div>
 
-      <div className="mt-20 flex flex-col">
+      <div className="mt-10 sm:mt-20 flex flex-col">
         <VerticalTimeline>
           {experiences.map((experience, index) => (
             <ExperienceCard key={`experience-${index}`} experience={experience} />
