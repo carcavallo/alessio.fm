@@ -21,13 +21,27 @@ const ExperienceCard = ({ experience }) => {
       iconStyle={{ background: experience.iconBg }}
       icon={
         <a href={experience.company_link} target="_blank" rel="noopener noreferrer">
-          <div className="flex justify-center items-center w-full h-full">
+          <motion.div 
+            className="flex justify-center items-center w-full h-full"
+            whileHover={{ scale: 1.1 }}
+            animate={{ 
+              boxShadow: [
+                '0 0 0 0 rgba(145, 94, 255, 0)',
+                '0 0 0 8px rgba(145, 94, 255, 0.2)',
+                '0 0 0 0 rgba(145, 94, 255, 0)',
+              ]
+            }}
+            transition={{ 
+              boxShadow: { duration: 2, repeat: Infinity },
+              scale: { duration: 0.3 }
+            }}
+          >
             <img
               src={experience.icon}
               alt={experience.company_name}
               className="w-[60%] h-[60%] object-contain"
             />
-          </div>
+          </motion.div>
         </a>
       }
     >
@@ -42,12 +56,16 @@ const ExperienceCard = ({ experience }) => {
 
       <ul className="mt-5 list-disc ml-5 space-y-2">
         {experience.points.map((point, index) => (
-          <li
+          <motion.li
             key={`experience-point-${index}`}
             className="text-white-100 text-[14px] pl-1 tracking-wider"
+            initial={{ opacity: 0, x: -20 }}
+            whileInView={{ opacity: 1, x: 0 }}
+            viewport={{ once: true }}
+            transition={{ duration: 0.5, delay: index * 0.1 }}
           >
             {point}
-          </li>
+          </motion.li>
         ))}
       </ul>
     </VerticalTimelineElement>

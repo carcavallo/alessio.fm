@@ -1,29 +1,100 @@
 import { motion } from 'framer-motion';
 import { styles } from '../styles';
 import { logoAC } from '../assets';
+import { useState, useEffect } from 'react';
 
 const Hero = () => {
+  const [currentRoleIndex, setCurrentRoleIndex] = useState(0);
+  const [displayedText, setDisplayedText] = useState('');
+  const [isDeleting, setIsDeleting] = useState(false);
+  
+  const roles = ['Site Reliability Engineer', 'Daytrader', 'Co-Founder Alpin Signals'];
+  
+  useEffect(() => {
+    const currentRole = roles[currentRoleIndex];
+    const timeout = setTimeout(() => {
+      if (!isDeleting) {
+        if (displayedText.length < currentRole.length) {
+          setDisplayedText(currentRole.substring(0, displayedText.length + 1));
+        } else {
+          setTimeout(() => setIsDeleting(true), 2000);
+        }
+      } else {
+        if (displayedText.length > 0) {
+          setDisplayedText(displayedText.substring(0, displayedText.length - 1));
+        } else {
+          setIsDeleting(false);
+          setCurrentRoleIndex((prev) => (prev + 1) % roles.length);
+        }
+      }
+    }, isDeleting ? 50 : 100);
+    
+    return () => clearTimeout(timeout);
+  }, [displayedText, isDeleting, currentRoleIndex]);
+
+  // Floating particles configuration
+  const particles = Array.from({ length: 6 }, (_, i) => ({
+    id: i,
+    x: Math.random() * 100,
+    y: Math.random() * 100,
+    delay: i * 0.2,
+    duration: 3 + Math.random() * 2,
+  }));
+
   return (
     <section className="relative w-full h-screen mx-auto overflow-hidden">
+      {/* Grid Background Pattern */}
+      <div className="absolute inset-0 z-0" 
+        style={{
+          backgroundImage: `
+            linear-gradient(rgba(145, 94, 255, 0.03) 1px, transparent 1px),
+            linear-gradient(90deg, rgba(145, 94, 255, 0.03) 1px, transparent 1px)
+          `,
+          backgroundSize: '50px 50px'
+        }}
+      />
+      
       {/* Gradient Background Animation */}
       <div className="absolute inset-0 z-0">
         <motion.div
-          className="absolute inset-0 opacity-30"
+          className="absolute inset-0 opacity-40"
           animate={{
             background: [
-              'radial-gradient(circle at 20% 50%, #915EFF 0%, transparent 50%)',
-              'radial-gradient(circle at 80% 50%, #915EFF 0%, transparent 50%)',
-              'radial-gradient(circle at 50% 80%, #915EFF 0%, transparent 50%)',
-              'radial-gradient(circle at 20% 50%, #915EFF 0%, transparent 50%)',
+              'radial-gradient(circle at 20% 30%, #915EFF 0%, transparent 60%)',
+              'radial-gradient(circle at 80% 70%, #915EFF 0%, transparent 60%)',
+              'radial-gradient(circle at 40% 90%, #915EFF 0%, transparent 60%)',
+              'radial-gradient(circle at 90% 20%, #915EFF 0%, transparent 60%)',
+              'radial-gradient(circle at 20% 30%, #915EFF 0%, transparent 60%)',
             ],
           }}
           transition={{
-            duration: 10,
+            duration: 15,
             repeat: Infinity,
             repeatType: 'loop',
+            ease: 'easeInOut',
           }}
         />
       </div>
+      
+      {/* Floating Particles */}
+      {particles.map((particle) => (
+        <motion.div
+          key={particle.id}
+          className="absolute w-1 h-1 sm:w-1.5 sm:h-1.5 bg-purple-400/40 rounded-full"
+          style={{ left: `${particle.x}%`, top: `${particle.y}%` }}
+          animate={{
+            y: [-20, 20, -20],
+            x: [-10, 10, -10],
+            opacity: [0.3, 0.6, 0.3],
+          }}
+          transition={{
+            duration: particle.duration,
+            repeat: Infinity,
+            delay: particle.delay,
+            ease: 'easeInOut',
+          }}
+        />
+      ))}
 
       {/* Main Content - properly centered */}
       <div className={`relative h-full max-w-7xl mx-auto ${styles.paddingX} flex flex-col items-center justify-center z-10 pb-20`}>
@@ -37,24 +108,31 @@ const Hero = () => {
         />
 
         <motion.h1
-          className="font-black text-white text-center text-[32px] xs:text-[40px] sm:text-[50px] md:text-[60px] lg:text-[80px] leading-tight mb-2 sm:mb-4"
+          className="font-black text-white text-center text-[32px] xs:text-[40px] sm:text-[50px] md:text-[60px] lg:text-[80px] leading-tight mb-2 sm:mb-4 relative"
           initial={{ opacity: 0, y: -30 }}
           animate={{ opacity: 1, y: 0 }}
           transition={{ duration: 0.8 }}
         >
-          <span className="text-[#BEBEBE] hover:text-[#915EFF] transition-colors duration-300">
+          {/* Glow effect behind text */}
+          <span className="absolute inset-0 blur-2xl opacity-30 bg-gradient-to-r from-purple-600 to-pink-600" />
+          <span className="relative text-[#BEBEBE] hover:text-[#915EFF] transition-colors duration-300">
             Alessio Carcavallo
           </span>
         </motion.h1>
 
-        <motion.p
-          className="text-[#dfd9ff] font-medium text-center text-[14px] xs:text-[16px] sm:text-[20px] lg:text-[26px] leading-snug mb-6 sm:mb-8 max-w-2xl"
+        <motion.div
+          className="text-[#dfd9ff] font-medium text-center text-[14px] xs:text-[16px] sm:text-[20px] lg:text-[26px] leading-snug mb-6 sm:mb-8 max-w-2xl min-h-[32px] sm:min-h-[40px]"
           initial={{ opacity: 0 }}
           animate={{ opacity: 1 }}
           transition={{ duration: 0.8, delay: 0.2 }}
         >
-          Site Reliability Engineer | Daytrader | Co-Founder Alpin Signals
-        </motion.p>
+          {displayedText}
+          <motion.span
+            className="inline-block w-0.5 h-5 sm:h-7 bg-purple-500 ml-1"
+            animate={{ opacity: [1, 0, 1] }}
+            transition={{ duration: 0.8, repeat: Infinity }}
+          />
+        </motion.div>
 
         {/* Social Links */}
         <motion.div

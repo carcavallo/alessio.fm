@@ -25,31 +25,57 @@ const ServiceCard = ({ index, title, description, features, price, cta }) => {
       whileInView={{ opacity: 1, y: 0 }}
       viewport={{ once: true, amount: 0.1 }}
       transition={{ duration: 0.5, delay: index * 0.1 }}
-      className="bg-tertiary p-6 sm:p-8 rounded-2xl sm:w-[360px] w-full flex flex-col justify-between"
+      className="relative sm:w-[360px] w-full group"
     >
-      <div>
-        <h3 className="text-white font-bold text-[20px] sm:text-[22px] mb-3">{title}</h3>
-        <p className="text-secondary text-[14px] sm:text-[15px] leading-[24px] sm:leading-[26px] mb-5">{description}</p>
-        <ul className="flex flex-wrap gap-2 mb-5">
-          {features.map((feature, i) => (
-            <li key={i} className="text-[12px] sm:text-[13px] text-white bg-black-100 px-3 py-1.5 rounded-full">
-              {feature}
-            </li>
-          ))}
-        </ul>
-      </div>
-      <div>
-        {price && (
-          <p className="text-[#915EFF] font-semibold text-[14px] sm:text-[15px] mb-4">{price}</p>
-        )}
-        <a
-          href={cta.link}
-          onClick={handleClick}
-          {...(cta.link.startsWith('mailto:') || cta.link.startsWith('#') ? {} : { target: '_blank', rel: 'noopener noreferrer' })}
-          className="inline-block bg-[#915EFF] hover:bg-[#7a4de0] text-white font-medium px-5 sm:px-6 py-2.5 rounded-lg transition-all duration-300 text-[13px] sm:text-[14px]"
-        >
-          {cta.text} →
-        </a>
+      {/* Gradient border on hover */}
+      <motion.div
+        className="absolute inset-0 rounded-2xl bg-gradient-to-br from-purple-500 via-pink-500 to-purple-500 opacity-0 group-hover:opacity-100 transition-opacity duration-500"
+        style={{ padding: '2px' }}
+      />
+      
+      <div 
+        className="relative bg-tertiary p-6 sm:p-8 rounded-2xl flex flex-col justify-between h-full overflow-hidden"
+        style={{
+          backgroundImage: `radial-gradient(circle at 50% 50%, rgba(145, 94, 255, 0.03) 1px, transparent 1px)`,
+          backgroundSize: '20px 20px'
+        }}
+      >
+        <div>
+          <h3 className="text-white font-bold text-[20px] sm:text-[22px] mb-3">{title}</h3>
+          <p className="text-secondary text-[14px] sm:text-[15px] leading-[24px] sm:leading-[26px] mb-5">{description}</p>
+          <ul className="flex flex-wrap gap-2 mb-5">
+            {features.map((feature, i) => (
+              <li key={i} className="text-[12px] sm:text-[13px] text-white bg-black-100 px-3 py-1.5 rounded-full">
+                {feature}
+              </li>
+            ))}
+          </ul>
+        </div>
+        <div>
+          {price && (
+            <motion.p 
+              className="text-[#915EFF] font-semibold text-[14px] sm:text-[15px] mb-4"
+              animate={{
+                textShadow: [
+                  '0 0 0px rgba(145, 94, 255, 0)',
+                  '0 0 12px rgba(145, 94, 255, 0.6)',
+                  '0 0 0px rgba(145, 94, 255, 0)',
+                ]
+              }}
+              transition={{ duration: 2, repeat: Infinity }}
+            >
+              {price}
+            </motion.p>
+          )}
+          <a
+            href={cta.link}
+            onClick={handleClick}
+            {...(cta.link.startsWith('mailto:') || cta.link.startsWith('#') ? {} : { target: '_blank', rel: 'noopener noreferrer' })}
+            className="inline-block bg-[#915EFF] hover:bg-[#7a4de0] text-white font-medium px-5 sm:px-6 py-2.5 rounded-lg transition-all duration-300 text-[13px] sm:text-[14px] hover:scale-105 hover:shadow-lg hover:shadow-purple-500/50"
+          >
+            {cta.text} →
+          </a>
+        </div>
       </div>
     </motion.div>
   );

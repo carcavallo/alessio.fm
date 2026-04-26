@@ -19,15 +19,30 @@ const ProjectCard = ({ index, name, description, tags, image, source_code_link }
           scale: 1,
           speed: 450,
         }}
-        className="bg-tertiary p-5 rounded-2xl sm:w-[360px] w-full"
+        className="bg-tertiary p-5 rounded-2xl sm:w-[360px] w-full group relative overflow-hidden"
       >
-        <div className="relative w-full h-[230px]">
-          <img src={image} alt="project_image" className="w-full h-full object-cover rounded-2xl" />
+        {/* Shimmer effect */}
+        <motion.div
+          className="absolute inset-0 bg-gradient-to-r from-transparent via-white/10 to-transparent -translate-x-full"
+          whileHover={{
+            translateX: '200%',
+            transition: { duration: 0.6, ease: 'easeInOut' }
+          }}
+        />
+        
+        <div className="relative w-full h-[230px] overflow-hidden rounded-2xl">
+          <motion.img 
+            src={image} 
+            alt="project_image" 
+            className="w-full h-full object-cover"
+            whileHover={{ scale: 1.05 }}
+            transition={{ duration: 0.3 }}
+          />
 
           <div className="absolute inset-0 flex justify-end m-3 card-img_hover">
             <div
               onClick={() => window.open(source_code_link, '_blank')}
-              className="black-gradient w-10 h-10 rounded-full flex justify-center items-center cursor-pointer"
+              className="black-gradient w-10 h-10 rounded-full flex justify-center items-center cursor-pointer hover:scale-110 transition-transform duration-300"
             >
               {isGitHub ? (
                 <img src={github} alt="source code" className="w-1/2 h-1/2 object-contain" />
@@ -51,16 +66,23 @@ const ProjectCard = ({ index, name, description, tags, image, source_code_link }
           </div>
         </div>
 
-        <div className="mt-5">
+        <div className="mt-5 relative z-10">
           <h3 className="text-white font-bold text-[24px]">{name}</h3>
           <p className="mt-2 text-secondary text-[14px]">{description}</p>
         </div>
 
-        <div className="mt-4 flex flex-wrap gap-2">
+        <div className="mt-4 flex flex-wrap gap-2 relative z-10">
           {tags.map((tag) => (
-            <p key={`${name}-${tag.name}`} className={`text-[14px] ${tag.color}`}>
+            <motion.p 
+              key={`${name}-${tag.name}`} 
+              className={`text-[14px] ${tag.color} px-2 py-1 rounded relative`}
+              whileHover={{ 
+                scale: 1.05,
+                textShadow: '0 0 8px rgba(145, 94, 255, 0.8)'
+              }}
+            >
               #{tag.name}
-            </p>
+            </motion.p>
           ))}
         </div>
       </Tilt>

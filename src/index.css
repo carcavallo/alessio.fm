@@ -13,6 +13,46 @@
   color-scheme: dark;
 }
 
+/* Smooth scroll behavior */
+html {
+  scroll-behavior: smooth;
+}
+
+/* Custom scrollbar styling */
+::-webkit-scrollbar {
+  width: 10px;
+}
+
+::-webkit-scrollbar-track {
+  background: #050816;
+}
+
+::-webkit-scrollbar-thumb {
+  background: #915EFF;
+  border-radius: 5px;
+}
+
+::-webkit-scrollbar-thumb:hover {
+  background: #7a4de0;
+}
+
+/* For Firefox */
+* {
+  scrollbar-width: thin;
+  scrollbar-color: #915EFF #050816;
+}
+
+/* Custom selection color */
+::selection {
+  background-color: #915EFF;
+  color: #ffffff;
+}
+
+::-moz-selection {
+  background-color: #915EFF;
+  color: #ffffff;
+}
+
 .hash-span {
   margin-top: -100px;
   padding-bottom: 100px;
