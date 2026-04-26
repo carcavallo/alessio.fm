@@ -1,42 +1,67 @@
 import React from 'react';
+import { logoAC } from '../assets';
 
 const Footer = () => {
   return (
-    <footer className="relative bg-tertiary text-white py-4 sm:py-6 mt-8 sm:mt-10">
-      {/* Gradient divider line */}
-      <div className="absolute top-0 left-0 right-0 h-[2px]" style={{ background: 'linear-gradient(to right, transparent, #0EA5E9, #06B6D4, transparent)' }} />
-      
-      <div className="container mx-auto flex flex-col md:flex-row justify-between items-center px-4 sm:px-6">
-        <p className="text-xs sm:text-sm text-gray-400">
-          &copy; 2026 alessio.fm
-        </p>
+    <footer className="bg-[#0a0816] border-t border-white/5">
+      {/* Gradient divider */}
+      <div className="h-[2px] bg-gradient-to-r from-transparent via-[#0EA5E9] to-transparent opacity-40" />
 
-        <div className="flex gap-4 sm:gap-6 mt-3 md:mt-0">
-          <a
-            href="https://github.com/carcavallo"
-            target="_blank"
-            rel="noopener noreferrer"
-            className="text-gray-400 hover:text-white transition-colors duration-300 relative group text-xs sm:text-sm"
-          >
-            GitHub
-            <span className="absolute bottom-0 left-0 w-0 h-[2px] group-hover:w-full transition-all duration-300" style={{ backgroundColor: '#0EA5E9' }} />
-          </a>
-          <a
-            href="https://alpinsignals.com"
-            target="_blank"
-            rel="noopener noreferrer"
-            className="text-gray-400 hover:text-white transition-colors duration-300 relative group text-xs sm:text-sm"
-          >
-            Alpin Signals
-            <span className="absolute bottom-0 left-0 w-0 h-[2px] group-hover:w-full transition-all duration-300" style={{ backgroundColor: '#0EA5E9' }} />
-          </a>
-          <a
-            href="mailto:contact@alessio.fm"
-            className="text-gray-400 hover:text-white transition-colors duration-300 relative group text-xs sm:text-sm"
-          >
-            Email
-            <span className="absolute bottom-0 left-0 w-0 h-[2px] group-hover:w-full transition-all duration-300" style={{ backgroundColor: '#0EA5E9' }} />
-          </a>
+      <div className="max-w-7xl mx-auto px-4 sm:px-16 py-10 sm:py-16">
+        {/* Footer Grid */}
+        <div className="grid grid-cols-2 sm:grid-cols-4 gap-8 sm:gap-12">
+          {/* Brand */}
+          <div className="col-span-2 sm:col-span-1">
+            <div className="flex items-center gap-2 mb-4">
+              <img src={logoAC} alt="AC" className="w-8 h-8" />
+              <span className="text-white text-[16px] font-bold">
+                alessio<span className="text-[#0EA5E9]">.fm</span>
+              </span>
+            </div>
+            <p className="text-[#94A3B8] text-[13px] leading-relaxed">
+              Software Development, IT-Support & Trading — alles aus einer Hand.
+            </p>
+          </div>
+
+          {/* Navigation */}
+          <div>
+            <h4 className="text-white font-semibold text-[14px] mb-4">Navigation</h4>
+            <div className="flex flex-col gap-2.5">
+              <a href="#about" className="text-[#94A3B8] text-[13px] hover:text-white transition-colors">About</a>
+              <a href="#work" className="text-[#94A3B8] text-[13px] hover:text-white transition-colors">Work</a>
+              <a href="#projects" className="text-[#94A3B8] text-[13px] hover:text-white transition-colors">Projects</a>
+              <a href="#services" className="text-[#94A3B8] text-[13px] hover:text-white transition-colors">Services</a>
+              <a href="#contact" className="text-[#94A3B8] text-[13px] hover:text-white transition-colors">Contact</a>
+            </div>
+          </div>
+
+          {/* Legal */}
+          <div>
+            <h4 className="text-white font-semibold text-[14px] mb-4">Legal</h4>
+            <div className="flex flex-col gap-2.5">
+              <span className="text-[#94A3B8] text-[13px]">Alessio Carcavallo</span>
+              <span className="text-[#94A3B8] text-[13px]">Innerdorf 1</span>
+              <span className="text-[#94A3B8] text-[13px]">7408 Cazis, Schweiz</span>
+              <a href="mailto:me@alessio.fm" className="text-[#94A3B8] text-[13px] hover:text-white transition-colors">me@alessio.fm</a>
+            </div>
+          </div>
+
+          {/* Social */}
+          <div>
+            <h4 className="text-white font-semibold text-[14px] mb-4">Social</h4>
+            <div className="flex flex-col gap-2.5">
+              <a href="https://github.com/carcavallo" target="_blank" rel="noopener noreferrer" className="text-[#94A3B8] text-[13px] hover:text-white transition-colors">GitHub</a>
+              <a href="https://alpinsignals.com" target="_blank" rel="noopener noreferrer" className="text-[#94A3B8] text-[13px] hover:text-white transition-colors">Alpin Signals</a>
+              <a href="https://linkedin.com/in/alessio-carcavallo" target="_blank" rel="noopener noreferrer" className="text-[#94A3B8] text-[13px] hover:text-white transition-colors">LinkedIn</a>
+            </div>
+          </div>
+        </div>
+
+        {/* Bottom */}
+        <div className="mt-10 sm:mt-16 pt-6 border-t border-white/5">
+          <p className="text-[#64748B] text-[12px] text-center">
+            © {new Date().getFullYear()} alessio.fm — Alle Rechte vorbehalten.
+          </p>
         </div>
       </div>
     </footer>
