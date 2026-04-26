@@ -66,7 +66,7 @@ export async function onRequestOptions() {
 export async function onRequestPost(context) {
   const resendKey = context.env.RESEND_API_KEY;
   if (!resendKey) {
-    return new Response(JSON.stringify({ error: 'Server config error' }), {
+    return new Response(JSON.stringify({ error: 'RESEND_API_KEY not configured' }), {
       status: 500,
       headers: { ...corsHeaders, 'Content-Type': 'application/json' },
     });
@@ -82,8 +82,8 @@ export async function onRequestPost(context) {
       });
     }
 
-    // Send admin notification
-    await fetch('https://api.resend.com/emails', {
+    // Send admin notification → me@alessio.fm
+    const adminRes = await fetch('https://api.resend.com/emails', {
       method: 'POST',
       headers: { Authorization: `Bearer ${resendKey}`, 'Content-Type': 'application/json' },
       body: JSON.stringify({
@@ -94,9 +94,17 @@ export async function onRequestPost(context) {
         html: adminEmailHtml({ name, email, service, message }),
       }),
     });
+    const adminData = await adminRes.json();
 
-    // Send confirmation to customer
-    await fetch('https://api.resend.com/emails', {
+    if (!adminRes.ok) {
+      return new Response(JSON.stringify({ error: 'Mail-Fehler', details: adminData }), {
+        status: 500,
+        headers: { ...corsHeaders, 'Content-Type': 'application/json' },
+      });
+    }
+
+    // Send confirmation to customer (from alpinsignals.com domain, reply-to info@alessio.fm)
+    const customerRes = await fetch('https://api.resend.com/emails', {
       method: 'POST',
       headers: { Authorization: `Bearer ${resendKey}`, 'Content-Type': 'application/json' },
       body: JSON.stringify({
@@ -107,12 +115,17 @@ export async function onRequestPost(context) {
         html: confirmationEmailHtml({ name, service }),
       }),
     });
+    const customerData = await customerRes.json();
 
-    return new Response(JSON.stringify({ ok: true }), {
+    return new Response(JSON.stringify({ 
+      ok: true, 
+      admin: adminData,
+      customer: customerRes.ok ? customerData : { error: customerData }
+    }), {
       headers: { ...corsHeaders, 'Content-Type': 'application/json' },
     });
   } catch (err) {
-    return new Response(JSON.stringify({ error: 'Fehler beim Senden.' }), {
+    return new Response(JSON.stringify({ error: 'Server error', message: err.message }), {
       status: 500,
       headers: { ...corsHeaders, 'Content-Type': 'application/json' },
     });
