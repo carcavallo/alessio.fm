@@ -11,6 +11,7 @@ import {
   Footer,
   StarsCanvas,
   Services,
+  Contact,
 } from './components';
 
 const App = () => {
@@ -26,6 +27,9 @@ const App = () => {
         <Tech />
         <Works />
         <Services />
+        <div className="relative z-0">
+          <Contact />
+        </div>
         <Footer />
       </div>
     </BrowserRouter>

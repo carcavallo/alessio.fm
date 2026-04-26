@@ -1,115 +1,152 @@
-import React, { useRef, useState } from 'react';
+import React, { useRef, useState, useEffect } from 'react';
 import { motion } from 'framer-motion';
-import emailjs from '@emailjs/browser';
-
 import { styles } from '../styles';
 import { EarthCanvas } from './canvas';
 import { SectionWrapper } from '../hoc';
 import { slideIn } from '../utils/motion';
 
+const serviceOptions = [
+  'Allgemein',
+  'Websites & Landing Pages',
+  'Web-Applikationen & APIs',
+  'Mobile & Desktop Apps',
+  'IT-Support & Technik-Hilfe',
+  'Hosting & Wartung',
+];
+
 const Contact = () => {
   const formRef = useRef();
   const [form, setForm] = useState({
-    from_name: '',
-    from_email: '',
+    name: '',
+    email: '',
+    service: 'Allgemein',
     message: '',
   });
-
   const [loading, setLoading] = useState(false);
+  const [status, setStatus] = useState(null); // 'success' | 'error' | null
+
+  // Read service from URL hash params (e.g. #contact?service=Web%20Development)
+  useEffect(() => {
+    const hash = window.location.hash;
+    if (hash.includes('service=')) {
+      const params = new URLSearchParams(hash.split('?')[1]);
+      const svc = params.get('service');
+      if (svc && serviceOptions.includes(svc)) {
+        setForm(prev => ({ ...prev, service: svc }));
+      }
+    }
+  }, []);
 
   const handleChange = (e) => {
-    const { target } = e;
-    const { name, value } = target;
-
-    setForm({
-      ...form,
-      [name]: value,
-    });
+    setForm({ ...form, [e.target.name]: e.target.value });
+    setStatus(null);
   };
 
-  const handleSubmit = (e) => {
+  const handleSubmit = async (e) => {
     e.preventDefault();
     setLoading(true);
+    setStatus(null);
 
-    emailjs
-      .sendForm(
-        'service_scdz5c8',
-        'template_5uvnl5z',
-        formRef.current,
-        'iE6wApo1dOmedbaC8'
-      )
-      .then(
-        () => {
-          setLoading(false);
-          alert('Danke für deine Nachricht! Ich melde mich so schnell wie möglich.');
+    try {
+      const res = await fetch('/api/contact', {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify(form),
+      });
 
-          setForm({
-            from_name: '',
-            from_email: '',
-            message: '',
-          });
-        },
-        (error) => {
-          setLoading(false);
-          console.error(error);
-
-          alert('Etwas ist schiefgelaufen. Bitte versuche es nochmal.');
-        }
-      );
+      if (res.ok) {
+        setStatus('success');
+        setForm({ name: '', email: '', service: 'Allgemein', message: '' });
+      } else {
+        setStatus('error');
+      }
+    } catch {
+      setStatus('error');
+    }
+    setLoading(false);
   };
 
   return (
-    <div className={`xl:mt-12 flex xl:flex-row flex-col-reverse gap-10 overflow-hidden`}>
+    <div className="xl:mt-12 flex xl:flex-row flex-col-reverse gap-10 overflow-hidden">
       <motion.div
         variants={slideIn('left', 'tween', 0.2, 1)}
-        className="flex-[0.75] bg-black-100 p-8 rounded-2xl"
+        className="flex-[0.75] bg-black-100 p-6 sm:p-8 rounded-2xl"
       >
-        <p className={styles.sectionSubText}>Kontakt aufnehmen</p>
+        <p className={styles.sectionSubText}>Schreib mir</p>
         <h3 className={styles.sectionHeadText}>Kontakt</h3>
 
-        <form ref={formRef} onSubmit={handleSubmit} className="mt-12 flex flex-col gap-8">
-          <input type="hidden" name="to_name" value="Alessio Carcavallo" />
-          <input type="hidden" name="to_email" value="me@alessio.fm" />
-
+        <form ref={formRef} onSubmit={handleSubmit} className="mt-8 sm:mt-12 flex flex-col gap-6 sm:gap-8">
           <label className="flex flex-col">
-            <span className="text-white font-medium mb-4">Dein Name</span>
+            <span className="text-white font-medium mb-3">Dein Name</span>
             <input
               type="text"
-              name="from_name"
-              value={form.from_name}
+              name="name"
+              required
+              value={form.name}
               onChange={handleChange}
               placeholder="Wie heisst du?"
-              className="bg-tertiary py-4 px-6 placeholder:text-secondary text-white rounded-lg outline-none border-none font-medium hover:shadow-lg transition-all"
+              className="bg-tertiary py-4 px-6 placeholder:text-secondary text-white rounded-lg outline-none border-none font-medium"
             />
           </label>
+
           <label className="flex flex-col">
-            <span className="text-white font-medium mb-4">Deine E-Mail</span>
+            <span className="text-white font-medium mb-3">Deine E-Mail</span>
             <input
               type="email"
-              name="from_email"
-              value={form.from_email}
+              name="email"
+              required
+              value={form.email}
               onChange={handleChange}
               placeholder="deine@email.com"
               className="bg-tertiary py-4 px-6 placeholder:text-secondary text-white rounded-lg outline-none border-none font-medium"
             />
           </label>
+
           <label className="flex flex-col">
-            <span className="text-white font-medium mb-4">Deine Nachricht</span>
+            <span className="text-white font-medium mb-3">Service</span>
+            <select
+              name="service"
+              value={form.service}
+              onChange={handleChange}
+              className="bg-tertiary py-4 px-6 text-white rounded-lg outline-none border-none font-medium cursor-pointer appearance-none"
+              style={{ backgroundImage: "url(\"data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='12' height='12' viewBox='0 0 12 12'%3E%3Cpath d='M6 8L1 3h10z' fill='%23aaa6c3'/%3E%3C/svg%3E\")", backgroundRepeat: 'no-repeat', backgroundPosition: 'right 16px center' }}
+            >
+              {serviceOptions.map(opt => (
+                <option key={opt} value={opt}>{opt}</option>
+              ))}
+            </select>
+          </label>
+
+          <label className="flex flex-col">
+            <span className="text-white font-medium mb-3">Deine Nachricht</span>
             <textarea
-              rows={7}
+              rows={5}
               name="message"
+              required
               value={form.message}
               onChange={handleChange}
-              placeholder="Was möchtest du mir mitteilen?"
-              className="bg-tertiary py-4 px-6 placeholder:text-secondary text-white rounded-lg outline-none border-none font-medium"
+              placeholder="Was kann ich für dich tun?"
+              className="bg-tertiary py-4 px-6 placeholder:text-secondary text-white rounded-lg outline-none border-none font-medium resize-none"
             />
           </label>
 
+          {status === 'success' && (
+            <div className="bg-green-900/30 border border-green-500/30 text-green-400 px-4 py-3 rounded-lg text-[14px]">
+              ✅ Nachricht gesendet! Ich melde mich innerhalb von 24h bei dir.
+            </div>
+          )}
+          {status === 'error' && (
+            <div className="bg-red-900/30 border border-red-500/30 text-red-400 px-4 py-3 rounded-lg text-[14px]">
+              ❌ Etwas ist schiefgelaufen. Bitte versuche es nochmal oder schreib direkt an contact@alessio.fm
+            </div>
+          )}
+
           <button
             type="submit"
-            className="bg-tertiary py-3 px-8 rounded-xl outline-none w-fit text-white font-bold shadow-md shadow-primary hover:shadow-lg transition-all"
+            disabled={loading}
+            className="bg-[#915EFF] hover:bg-[#7a4de0] disabled:opacity-50 py-3 px-8 rounded-xl outline-none w-fit text-white font-bold shadow-md shadow-primary transition-all duration-300"
           >
-            {loading ? 'Wird gesendet...' : 'Senden'}
+            {loading ? 'Wird gesendet...' : 'Nachricht senden'}
           </button>
         </form>
       </motion.div>

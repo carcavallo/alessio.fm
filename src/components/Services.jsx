@@ -5,39 +5,53 @@ import { offerings } from '../constants';
 import { SectionWrapper } from '../hoc';
 import { textVariant } from '../utils/motion';
 
-const ServiceCard = ({ index, title, description, features, price, cta }) => (
-  <motion.div
-    initial={{ opacity: 0, y: 30 }}
-    whileInView={{ opacity: 1, y: 0 }}
-    viewport={{ once: true, amount: 0.1 }}
-    transition={{ duration: 0.5, delay: index * 0.1 }}
-    className="bg-tertiary p-6 sm:p-8 rounded-2xl sm:w-[360px] w-full flex flex-col justify-between"
-  >
-    <div>
-      <h3 className="text-white font-bold text-[20px] sm:text-[22px] mb-3">{title}</h3>
-      <p className="text-secondary text-[14px] sm:text-[15px] leading-[24px] sm:leading-[26px] mb-5">{description}</p>
-      <ul className="flex flex-wrap gap-2 mb-5">
-        {features.map((feature, i) => (
-          <li key={i} className="text-[12px] sm:text-[13px] text-white bg-black-100 px-3 py-1.5 rounded-full">
-            {feature}
-          </li>
-        ))}
-      </ul>
-    </div>
-    <div>
-      {price && (
-        <p className="text-[#915EFF] font-semibold text-[14px] sm:text-[15px] mb-4">{price}</p>
-      )}
-      <a
-        href={cta.link}
-        {...(cta.link.startsWith('mailto:') || cta.link.startsWith('#') ? {} : { target: '_blank', rel: 'noopener noreferrer' })}
-        className="inline-block bg-[#915EFF] hover:bg-[#7a4de0] text-white font-medium px-5 sm:px-6 py-2.5 rounded-lg transition-all duration-300 text-[13px] sm:text-[14px]"
-      >
-        {cta.text} →
-      </a>
-    </div>
-  </motion.div>
-);
+const ServiceCard = ({ index, title, description, features, price, cta }) => {
+  const handleClick = (e) => {
+    if (cta.link.startsWith('#contact')) {
+      e.preventDefault();
+      const contactSection = document.getElementById('contact');
+      if (contactSection) {
+        contactSection.scrollIntoView({ behavior: 'smooth' });
+        window.location.hash = cta.link;
+      }
+    }
+  };
+
+  return (
+    <motion.div
+      initial={{ opacity: 0, y: 30 }}
+      whileInView={{ opacity: 1, y: 0 }}
+      viewport={{ once: true, amount: 0.1 }}
+      transition={{ duration: 0.5, delay: index * 0.1 }}
+      className="bg-tertiary p-6 sm:p-8 rounded-2xl sm:w-[360px] w-full flex flex-col justify-between"
+    >
+      <div>
+        <h3 className="text-white font-bold text-[20px] sm:text-[22px] mb-3">{title}</h3>
+        <p className="text-secondary text-[14px] sm:text-[15px] leading-[24px] sm:leading-[26px] mb-5">{description}</p>
+        <ul className="flex flex-wrap gap-2 mb-5">
+          {features.map((feature, i) => (
+            <li key={i} className="text-[12px] sm:text-[13px] text-white bg-black-100 px-3 py-1.5 rounded-full">
+              {feature}
+            </li>
+          ))}
+        </ul>
+      </div>
+      <div>
+        {price && (
+          <p className="text-[#915EFF] font-semibold text-[14px] sm:text-[15px] mb-4">{price}</p>
+        )}
+        <a
+          href={cta.link}
+          onClick={handleClick}
+          {...(cta.link.startsWith('mailto:') || cta.link.startsWith('#') ? {} : { target: '_blank', rel: 'noopener noreferrer' })}
+          className="inline-block bg-[#915EFF] hover:bg-[#7a4de0] text-white font-medium px-5 sm:px-6 py-2.5 rounded-lg transition-all duration-300 text-[13px] sm:text-[14px]"
+        >
+          {cta.text} →
+        </a>
+      </div>
+    </motion.div>
+  );
+};
 
 const Services = () => {
   return (
