@@ -31,6 +31,7 @@ import {
   sonos,
   alpinsignals,
   urklang,
+  zuripack,
   alpinsignalsCompany,
 } from '../assets';
 
@@ -238,6 +239,27 @@ const projects = [
     ],
     image: urklang,
     source_code_link: 'https://urklang-kinesiologie.ch',
+  },
+  {
+    name: 'zuripack',
+    description:
+      'E-Commerce-Plattform für individuell bedruckte Verpackungen. Produktkonfigurator, Warenkorb-System und automatisierte Bestellabwicklung.',
+    tags: [
+      {
+        name: 'javascript',
+        color: 'blue-text-gradient',
+      },
+      {
+        name: 'cloudflare',
+        color: 'green-text-gradient',
+      },
+      {
+        name: 'e-commerce',
+        color: 'pink-text-gradient',
+      },
+    ],
+    image: zuripack,
+    source_code_link: 'https://zuripack.com',
   },
 ];
 

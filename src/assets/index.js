@@ -39,6 +39,7 @@ import flipflopapp from "./flipflopscore.png";
 import sonos from "./sonos.png";
 import alpinsignals from "./alpinsignals.png";
 import urklang from "./urklang.png";
+import zuripack from "./zuripack.jpg";
 
 export {
   logo,
@@ -78,5 +79,6 @@ export {
   sonos,
   alpinsignals,
   urklang,
+  zuripack,
   alpinsignalsCompany,
 };
