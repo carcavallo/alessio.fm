@@ -73,7 +73,20 @@ export async function onRequestPost(context) {
   }
 
   try {
-    const { name, email, service, message } = await context.request.json();
+    const body = await context.request.json();
+    const { name, email, service, message } = body;
+
+    // Spam protection: honeypot + timing check
+    if (body._honeypot || body.website) {
+      return new Response(JSON.stringify({ success: true }), {
+        status: 200, headers: { ...corsHeaders, 'Content-Type': 'application/json' },
+      });
+    }
+    if (body._ts && (Date.now() - body._ts) < 3000) {
+      return new Response(JSON.stringify({ error: 'Bitte warten Sie einen Moment.' }), {
+        status: 429, headers: { ...corsHeaders, 'Content-Type': 'application/json' },
+      });
+    }
 
     if (!name || !email || !message) {
       return new Response(JSON.stringify({ error: 'Bitte alle Felder ausfüllen.' }), {

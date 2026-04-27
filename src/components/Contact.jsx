@@ -24,6 +24,8 @@ const Contact = () => {
   });
   const [loading, setLoading] = useState(false);
   const [status, setStatus] = useState(null);
+  const [honeypot, setHoneypot] = useState('');
+  const [formTs] = useState(Date.now());
 
   // Listen for service selection from Services component
   useEffect(() => {
@@ -63,7 +65,7 @@ const Contact = () => {
       const res = await fetch('/api/contact', {
         method: 'POST',
         headers: { 'Content-Type': 'application/json' },
-        body: JSON.stringify(form),
+        body: JSON.stringify({ ...form, website: honeypot, _ts: formTs }),
       });
 
       if (res.ok) {
@@ -88,6 +90,9 @@ const Contact = () => {
         <h3 className={styles.sectionHeadText}>Kontakt</h3>
 
         <form ref={formRef} onSubmit={handleSubmit} className="mt-6 sm:mt-8 md:mt-12 flex flex-col gap-5 sm:gap-6 md:gap-8">
+          <div style={{position:'absolute',left:'-9999px'}} aria-hidden="true">
+            <input type="text" name="website" value={honeypot} onChange={(e)=>setHoneypot(e.target.value)} tabIndex="-1" autoComplete="off" />
+          </div>
           <label className="flex flex-col">
             <span className="text-white font-medium mb-2 sm:mb-3 text-[14px] sm:text-base">Dein Name</span>
             <input
