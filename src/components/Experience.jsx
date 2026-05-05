@@ -5,6 +5,7 @@ import { motion } from 'framer-motion';
 import 'react-vertical-timeline-component/style.min.css';
 
 import { styles } from '../styles';
+import { useLanguage } from '../context/LanguageContext';
 import { experiences } from '../constants';
 import { SectionWrapper } from '../hoc';
 import { textVariant } from '../utils/motion';
@@ -63,11 +64,12 @@ const ExperienceCard = ({ experience }) => {
 };
 
 const Experience = () => {
+  const { t, tObj } = useLanguage();
   return (
     <>
       <motion.div variants={textVariant()}>
-        <p className={`${styles.sectionSubText} text-center`}>What I have done so far</p>
-        <h2 className={`${styles.sectionHeadText} text-center`}>Work Experience</h2>
+        <p className={`${styles.sectionSubText} text-center`}>{t('experience.subtitle')}</p>
+        <h2 className={`${styles.sectionHeadText} text-center`}>{t('experience.title')}</h2>
       </motion.div>
 
       <div className="mt-10 sm:mt-20 flex flex-col">

@@ -1,6 +1,7 @@
 import React from 'react';
 import { motion } from 'framer-motion';
 import { styles } from '../styles';
+import { useLanguage } from '../context/LanguageContext';
 import { offerings } from '../constants';
 import { SectionWrapper } from '../hoc';
 import { textVariant } from '../utils/motion';
@@ -89,11 +90,12 @@ const ServiceCard = ({ index, title, description, features, price, cta }) => {
 };
 
 const Services = () => {
+  const { t, tObj } = useLanguage();
   return (
     <>
       <motion.div variants={textVariant()}>
-        <p className={styles.sectionSubText}>Was ich anbiete</p>
-        <h2 className={styles.sectionHeadText}>Services</h2>
+        <p className={styles.sectionSubText}>{t('services.subtitle')}</p>
+        <h2 className={styles.sectionHeadText}>{t('services.title')}</h2>
       </motion.div>
 
       <p className="mt-4 text-secondary text-[15px] sm:text-[17px] max-w-3xl leading-[26px] sm:leading-[30px]">

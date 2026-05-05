@@ -1,13 +1,23 @@
 import React, { useEffect, useState } from 'react';
 import { Link } from 'react-router-dom';
 import { styles } from '../styles';
-import { navLinks } from '../constants';
 import { logoAC } from '../assets';
+import { useLanguage } from '../context/LanguageContext';
+import { languages } from '../i18n';
 
 const Navbar = () => {
   const [active, setActive] = useState('');
   const [toggle, setToggle] = useState(false);
   const [scrolled, setScrolled] = useState(false);
+  const { language, changeLanguage, t } = useLanguage();
+
+  const navLinks = [
+    { id: 'about', title: t('nav.about') },
+    { id: 'work', title: t('nav.work') },
+    { id: 'projects', title: t('nav.projects') },
+    { id: 'services', title: t('nav.services') },
+    { id: 'contact', title: t('nav.contact') },
+  ];
 
   useEffect(() => {
     const handleScroll = () => {
@@ -17,7 +27,6 @@ const Navbar = () => {
     return () => window.removeEventListener('scroll', handleScroll);
   }, []);
 
-  // Prevent body scroll when menu is open
   useEffect(() => {
     if (toggle) {
       document.body.style.overflow = 'hidden';
@@ -43,17 +52,36 @@ const Navbar = () => {
           </Link>
 
           {/* Desktop Nav */}
-          <ul className="list-none hidden sm:flex flex-row gap-8 lg:gap-10">
-            {navLinks.map((nav) => (
-              <li
-                key={nav.id}
-                className={`${active === nav.title ? 'text-white' : 'text-secondary'} hover:text-white text-[16px] lg:text-[18px] font-medium cursor-pointer transition-colors duration-200`}
-                onClick={() => setActive(nav.title)}
-              >
-                <a href={`#${nav.id}`}>{nav.title}</a>
-              </li>
-            ))}
-          </ul>
+          <div className="hidden sm:flex items-center gap-6 lg:gap-8">
+            <ul className="list-none flex flex-row gap-6 lg:gap-8">
+              {navLinks.map((nav) => (
+                <li
+                  key={nav.id}
+                  className={`${active === nav.title ? 'text-white' : 'text-secondary'} hover:text-white text-[16px] lg:text-[18px] font-medium cursor-pointer transition-colors duration-200`}
+                  onClick={() => setActive(nav.title)}
+                >
+                  <a href={`#${nav.id}`}>{nav.title}</a>
+                </li>
+              ))}
+            </ul>
+
+            {/* Language Switcher */}
+            <div className="flex items-center gap-1 border-l border-white/10 pl-6">
+              {languages.map((lang, i) => (
+                <React.Fragment key={lang.code}>
+                  {i > 0 && <span className="text-white/20 text-[13px]">|</span>}
+                  <button
+                    onClick={() => changeLanguage(lang.code)}
+                    className={`text-[13px] font-medium px-1 transition-colors duration-200 ${
+                      language === lang.code ? 'text-[#0EA5E9]' : 'text-secondary hover:text-white'
+                    }`}
+                  >
+                    {lang.label}
+                  </button>
+                </React.Fragment>
+              ))}
+            </div>
+          </div>
 
           {/* Mobile hamburger */}
           <button
@@ -68,18 +96,11 @@ const Navbar = () => {
         </div>
       </nav>
 
-      {/* Mobile menu overlay — covers entire screen */}
       {toggle && (
-        <div
-          className="sm:hidden fixed inset-0 bg-black/60 z-40"
-          onClick={() => setToggle(false)}
-        />
+        <div className="sm:hidden fixed inset-0 bg-black/60 z-40" onClick={() => setToggle(false)} />
       )}
 
-      {/* Mobile menu panel — solid background, no bleed-through */}
-      <div
-        className={`sm:hidden fixed top-0 left-0 right-0 z-40 transition-transform duration-300 ease-in-out ${toggle ? 'translate-y-0' : '-translate-y-full'}`}
-      >
+      <div className={`sm:hidden fixed top-0 left-0 right-0 z-40 transition-transform duration-300 ease-in-out ${toggle ? 'translate-y-0' : '-translate-y-full'}`}>
         <div className="bg-[#050816] pt-24 pb-8 px-8 shadow-2xl border-b border-white/5">
           <ul className="list-none flex flex-col gap-6">
             {navLinks.map((nav) => (
@@ -92,8 +113,24 @@ const Navbar = () => {
               </li>
             ))}
           </ul>
-          {/* Social links */}
-          <div className="flex gap-5 mt-8 pt-6 border-t border-white/10">
+
+          {/* Language & Social in Mobile */}
+          <div className="flex items-center gap-3 mt-8 pt-6 border-t border-white/10">
+            {languages.map((lang, i) => (
+              <React.Fragment key={lang.code}>
+                {i > 0 && <span className="text-white/20 text-[13px]">|</span>}
+                <button
+                  onClick={() => changeLanguage(lang.code)}
+                  className={`text-[14px] font-medium transition-colors ${
+                    language === lang.code ? 'text-[#0EA5E9]' : 'text-secondary hover:text-white'
+                  }`}
+                >
+                  {lang.label}
+                </button>
+              </React.Fragment>
+            ))}
+          </div>
+          <div className="flex gap-5 mt-6 pt-6 border-t border-white/10">
             <a href="https://github.com/carcavallo" target="_blank" rel="noopener noreferrer" className="text-secondary hover:text-white transition-colors text-[15px]">GitHub</a>
             <a href="https://alpinsignals.com" target="_blank" rel="noopener noreferrer" className="text-secondary hover:text-white transition-colors text-[15px]">Alpin Signals</a>
             <a href="mailto:contact@alessio.fm" className="text-secondary hover:text-white transition-colors text-[15px]">Email</a>

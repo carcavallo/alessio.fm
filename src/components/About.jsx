@@ -6,6 +6,7 @@ import { styles } from '../styles';
 import { services } from '../constants';
 import { SectionWrapper } from '../hoc';
 import { fadeIn, textVariant } from '../utils/motion';
+import { useLanguage } from '../context/LanguageContext';
 
 // Count-up component
 const CountUp = ({ end, duration = 2, suffix = '' }) => {
@@ -91,12 +92,13 @@ const ServiceCard = ({ index, title, icon }) => (
 
 const About = () => {
   const age = calculateAge('2002-10-08');
+  const { t } = useLanguage();
 
   return (
     <>
       <motion.div variants={textVariant()}>
-        <p className={styles.sectionSubText}>Introduction</p>
-        <h2 className={styles.sectionHeadText}>Overview</h2>
+        <p className={styles.sectionSubText}>{t('about.subtitle')}</p>
+        <h2 className={styles.sectionHeadText}>{t('about.title')}</h2>
       </motion.div>
 
       <motion.p

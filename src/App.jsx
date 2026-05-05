@@ -13,26 +13,29 @@ import {
   Services,
   Contact,
 } from './components';
+import { LanguageProvider } from './context/LanguageContext';
 
 const App = () => {
   return (
-    <BrowserRouter>
-      <div className="relative z-0 bg-primary">
-        <div className="bg-hero-pattern bg-cover bg-no-repeat bg-center">
-          <Navbar />
-          <Hero />
+    <LanguageProvider>
+      <BrowserRouter>
+        <div className="relative z-0 bg-primary">
+          <div className="bg-hero-pattern bg-cover bg-no-repeat bg-center">
+            <Navbar />
+            <Hero />
+          </div>
+          <About />
+          <Experience />
+          <Tech />
+          <Works />
+          <Services />
+          <div className="relative z-0">
+            <Contact />
+          </div>
+          <Footer />
         </div>
-        <About />
-        <Experience />
-        <Tech />
-        <Works />
-        <Services />
-        <div className="relative z-0">
-          <Contact />
-        </div>
-        <Footer />
-      </div>
-    </BrowserRouter>
+      </BrowserRouter>
+    </LanguageProvider>
   );
 };
 

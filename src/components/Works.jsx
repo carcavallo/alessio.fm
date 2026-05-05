@@ -3,6 +3,7 @@ import Tilt from 'react-parallax-tilt';
 import { motion } from 'framer-motion';
 
 import { styles } from '../styles';
+import { useLanguage } from '../context/LanguageContext';
 import { github } from '../assets';
 import { SectionWrapper } from '../hoc';
 import { projects } from '../constants';
@@ -91,11 +92,12 @@ const ProjectCard = ({ index, name, description, tags, image, source_code_link }
 };
 
 const Works = () => {
+  const { t, tObj } = useLanguage();
   return (
     <>
       <motion.div variants={textVariant()}>
-        <p className={`${styles.sectionSubText} `}>My work</p>
-        <h2 className={`${styles.sectionHeadText}`}>Projects</h2>
+        <p className={`${styles.sectionSubText} `}>{t('projects.subtitle')}</p>
+        <h2 className={`${styles.sectionHeadText}`}>{t('projects.title')}</h2>
       </motion.div>
 
       <div className="w-full flex">

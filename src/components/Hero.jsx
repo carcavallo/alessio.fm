@@ -2,8 +2,10 @@ import { motion } from 'framer-motion';
 import { styles } from '../styles';
 import { logoAC } from '../assets';
 import { useState, useEffect } from 'react';
+import { useLanguage } from '../context/LanguageContext';
 
 const Hero = () => {
+  const { t } = useLanguage();
   const [currentRoleIndex, setCurrentRoleIndex] = useState(0);
   const [displayedText, setDisplayedText] = useState('');
   const [isDeleting, setIsDeleting] = useState(false);

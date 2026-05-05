@@ -1,4 +1,5 @@
 import React, { useRef, useState, useEffect } from 'react';
+import { useLanguage } from '../context/LanguageContext';
 import { motion } from 'framer-motion';
 import { styles } from '../styles';
 import { EarthCanvas } from './canvas';
@@ -15,6 +16,7 @@ const serviceOptions = [
 ];
 
 const Contact = () => {
+  const { t, tObj } = useLanguage();
   const formRef = useRef();
   const [form, setForm] = useState({
     name: '',
@@ -86,8 +88,8 @@ const Contact = () => {
         variants={slideIn('left', 'tween', 0.2, 1)}
         className="flex-1 bg-black-100 p-5 sm:p-6 md:p-8 rounded-2xl"
       >
-        <p className={styles.sectionSubText}>Schreib mir</p>
-        <h3 className={styles.sectionHeadText}>Kontakt</h3>
+        <p className={styles.sectionSubText}>{t('contact.subtitle')}</p>
+        <h3 className={styles.sectionHeadText}>{t('contact.title')}</h3>
 
         <form ref={formRef} onSubmit={handleSubmit} className="mt-6 sm:mt-8 md:mt-12 flex flex-col gap-5 sm:gap-6 md:gap-8">
           <div style={{position:'absolute',left:'-9999px'}} aria-hidden="true">
