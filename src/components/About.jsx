@@ -105,37 +105,37 @@ const About = () => {
         variants={fadeIn('', '', 0.1, 1)}
         className="mt-4 text-secondary text-[17px] max-w-3xl leading-[30px]"
       >
-        Mit {age} Jahren habe ich meine Lehre als Applikationsentwickler abgeschlossen und arbeite heute als Site Reliability Engineer bei der{' '}
+        {t('about.bio1', { age })}{' '}
         <a
           href="https://www.inventx.ch/"
           class="font-medium text-[#38BDF8] hover:underline"
         >
           Inventx AG
         </a>
-        . Neben meiner Haupttätigkeit bin ich aktiver Daytrader und Co-Founder von{' '}
+        {t('about.bio2')}{' '}
         <a
           href="https://alpinsignals.com"
           class="font-medium text-[#38BDF8] hover:underline"
         >
           Alpin Signals
         </a>{' '}
-        — einer Trading-Community für ambitionierte Trader.
+        {t('about.bio3')}
         <br />
         <br />
-        <b>Site Reliability Engineering:</b> Überwachung, Wartung und Migration komplexer IT-Infrastrukturen. Automatisierung mit Ansible, Monitoring und Incident Response. Expertise in Linux, Docker, Kubernetes und Cloud-Infrastrukturen.
+        <b>{t('about.sre')}</b> {t('about.sreDesc')}
         <br />
         <br />
-        <b>Trading:</b> Aktiver Daytrader mit Fokus auf US-Indizes (Nasdaq, S&P 500) und Gold. Trading-Stil basiert auf ICT/SMC-Konzepten — Liquidity Sweeps, Order Blocks, Fair Value Gaps.
+        <b>{t('about.trading')}</b> {t('about.tradingDesc')}
         <br />
         <br />
-        <b>Entrepreneurship:</b> Aufbau von Alpin Signals als Trading-Community mit automatisierten Marktanalysen, Telegram-Bot und Coaching-Angeboten.
+        <b>{t('about.entrepreneurship')}</b> {t('about.entrepreneurshipDesc')}
       </motion.p>
 
       {/* Stats Cards */}
       <div className="mt-8 sm:mt-12 flex flex-wrap gap-4 sm:gap-6 justify-center">
-        <StatCard number={5} suffix="+" label="Jahre Erfahrung" index={0} />
-        <StatCard number={50} suffix="+" label="Projekte" index={1} />
-        <StatCard number={10} suffix="+" label="Kunden" index={2} />
+        <StatCard number={5} suffix="+" label={t('about.stats.years')} index={0} />
+        <StatCard number={50} suffix="+" label={t('about.stats.projects')} index={1} />
+        <StatCard number={10} suffix="+" label={t('about.stats.clients')} index={2} />
       </div>
 
       <div className="mt-10 sm:mt-16 grid grid-cols-2 sm:flex sm:flex-wrap gap-5 sm:gap-10">

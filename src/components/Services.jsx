@@ -91,6 +91,21 @@ const ServiceCard = ({ index, title, description, features, price, cta }) => {
 
 const Services = () => {
   const { t, tObj } = useLanguage();
+  const translatedServices = tObj('services.items');
+
+  // Merge translations with constants (keep CTA links from constants)
+  const mergedServices = offerings.map((offering, index) => ({
+    ...offering,
+    title: translatedServices[index]?.title || offering.title,
+    description: translatedServices[index]?.description || offering.description,
+    features: translatedServices[index]?.features || offering.features,
+    price: translatedServices[index]?.price || offering.price,
+    cta: {
+      ...offering.cta,
+      text: translatedServices[index]?.cta || offering.cta.text,
+    },
+  }));
+
   return (
     <>
       <motion.div variants={textVariant()}>
@@ -98,12 +113,8 @@ const Services = () => {
         <h2 className={styles.sectionHeadText}>{t('services.title')}</h2>
       </motion.div>
 
-      <p className="mt-4 text-secondary text-[15px] sm:text-[17px] max-w-3xl leading-[26px] sm:leading-[30px]">
-        Von der einfachen Website bis zur komplexen Applikation, vom IT-Support bis zum Trading-Coaching — ich biete massgeschneiderte Lösungen für jedes Budget.
-      </p>
-
       <div className="mt-8 sm:mt-16 flex flex-col sm:flex-row sm:flex-wrap gap-4 sm:gap-8 justify-center">
-        {offerings.map((offering, index) => (
+        {mergedServices.map((offering, index) => (
           <ServiceCard key={offering.title} index={index} {...offering} />
         ))}
       </div>

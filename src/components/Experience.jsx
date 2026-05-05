@@ -65,6 +65,16 @@ const ExperienceCard = ({ experience }) => {
 
 const Experience = () => {
   const { t, tObj } = useLanguage();
+  const translatedExperiences = tObj('experience.items');
+
+  // Merge translations with constants (keep icons, links, colors from constants)
+  const mergedExperiences = experiences.map((exp, index) => ({
+    ...exp,
+    title: translatedExperiences[index]?.title || exp.title,
+    points: translatedExperiences[index]?.points || exp.points,
+    date: translatedExperiences[index]?.date || exp.date,
+  }));
+
   return (
     <>
       <motion.div variants={textVariant()}>
@@ -74,7 +84,7 @@ const Experience = () => {
 
       <div className="mt-10 sm:mt-20 flex flex-col">
         <VerticalTimeline>
-          {experiences.map((experience, index) => (
+          {mergedExperiences.map((experience, index) => (
             <ExperienceCard key={`experience-${index}`} experience={experience} />
           ))}
         </VerticalTimeline>

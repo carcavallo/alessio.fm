@@ -93,6 +93,15 @@ const ProjectCard = ({ index, name, description, tags, image, source_code_link }
 
 const Works = () => {
   const { t, tObj } = useLanguage();
+  const translatedProjects = tObj('projects.items');
+
+  // Merge translations with constants (keep images, tags, links from constants)
+  const mergedProjects = projects.map((proj, index) => ({
+    ...proj,
+    name: translatedProjects[index]?.name || proj.name,
+    description: translatedProjects[index]?.description || proj.description,
+  }));
+
   return (
     <>
       <motion.div variants={textVariant()}>
@@ -105,12 +114,12 @@ const Works = () => {
           variants={fadeIn('', '', 0.1, 1)}
           className="mt-3 text-secondary text-[17px] max-w-3xl leading-[30px]"
         >
-          Hier sind einige meiner Projekte. Von Trading-Plattformen über Kunden-Websites bis zu Open-Source — jedes Projekt zeigt einen anderen Aspekt meiner Arbeit.
+          {t('projects.description')}
         </motion.p>
       </div>
 
       <div className="mt-10 sm:mt-20 flex flex-wrap gap-5 sm:gap-7">
-        {projects.map((project, index) => (
+        {mergedProjects.map((project, index) => (
           <ProjectCard key={`project-${index}`} index={index} {...project} />
         ))}
       </div>

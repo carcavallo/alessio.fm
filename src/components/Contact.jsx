@@ -6,22 +6,16 @@ import { EarthCanvas } from './canvas';
 import { SectionWrapper } from '../hoc';
 import { slideIn } from '../utils/motion';
 
-const serviceOptions = [
-  'Allgemein',
-  'Websites & Landing Pages',
-  'Web-Applikationen & APIs',
-  'Mobile & Desktop Apps',
-  'IT-Support & Technik-Hilfe',
-  'Hosting & Wartung',
-];
+
 
 const Contact = () => {
   const { t, tObj } = useLanguage();
+  const serviceOptions = tObj('contact.serviceOptions');
   const formRef = useRef();
   const [form, setForm] = useState({
     name: '',
     email: '',
-    service: 'Allgemein',
+    service: serviceOptions[0] || '',
     message: '',
   });
   const [loading, setLoading] = useState(false);
@@ -51,7 +45,7 @@ const Contact = () => {
     }
 
     return () => window.removeEventListener('selectService', handleServiceSelect);
-  }, []);
+  }, [serviceOptions]);
 
   const handleChange = (e) => {
     setForm({ ...form, [e.target.name]: e.target.value });
@@ -96,33 +90,33 @@ const Contact = () => {
             <input type="text" name="website" value={honeypot} onChange={(e)=>setHoneypot(e.target.value)} tabIndex="-1" autoComplete="off" />
           </div>
           <label className="flex flex-col">
-            <span className="text-white font-medium mb-2 sm:mb-3 text-[14px] sm:text-base">Dein Name</span>
+            <span className="text-white font-medium mb-2 sm:mb-3 text-[14px] sm:text-base">{t('contact.form.name')}</span>
             <input
               type="text"
               name="name"
               required
               value={form.name}
               onChange={handleChange}
-              placeholder="Wie heisst du?"
+              placeholder={t('contact.form.namePlaceholder')}
               className="bg-tertiary py-3 sm:py-4 px-4 sm:px-6 placeholder:text-secondary text-white rounded-lg outline-none border-none font-medium text-[14px] sm:text-base"
             />
           </label>
 
           <label className="flex flex-col">
-            <span className="text-white font-medium mb-2 sm:mb-3 text-[14px] sm:text-base">Deine E-Mail</span>
+            <span className="text-white font-medium mb-2 sm:mb-3 text-[14px] sm:text-base">{t('contact.form.email')}</span>
             <input
               type="email"
               name="email"
               required
               value={form.email}
               onChange={handleChange}
-              placeholder="deine@email.com"
+              placeholder={t('contact.form.emailPlaceholder')}
               className="bg-tertiary py-3 sm:py-4 px-4 sm:px-6 placeholder:text-secondary text-white rounded-lg outline-none border-none font-medium text-[14px] sm:text-base"
             />
           </label>
 
           <label className="flex flex-col">
-            <span className="text-white font-medium mb-2 sm:mb-3 text-[14px] sm:text-base">Service</span>
+            <span className="text-white font-medium mb-2 sm:mb-3 text-[14px] sm:text-base">{t('contact.form.service')}</span>
             <select
               name="service"
               value={form.service}
@@ -137,26 +131,26 @@ const Contact = () => {
           </label>
 
           <label className="flex flex-col">
-            <span className="text-white font-medium mb-2 sm:mb-3 text-[14px] sm:text-base">Deine Nachricht</span>
+            <span className="text-white font-medium mb-2 sm:mb-3 text-[14px] sm:text-base">{t('contact.form.message')}</span>
             <textarea
               rows={5}
               name="message"
               required
               value={form.message}
               onChange={handleChange}
-              placeholder="Was kann ich für dich tun?"
+              placeholder={t('contact.form.messagePlaceholder')}
               className="bg-tertiary py-3 sm:py-4 px-4 sm:px-6 placeholder:text-secondary text-white rounded-lg outline-none border-none font-medium resize-none text-[14px] sm:text-base"
             />
           </label>
 
           {status === 'success' && (
             <div className="bg-green-900/30 border border-green-500/30 text-green-400 px-3 sm:px-4 py-2 sm:py-3 rounded-lg text-[13px] sm:text-[14px]">
-              ✅ Nachricht gesendet! Ich melde mich innerhalb von 24h bei dir.
+              ✅ {t('contact.form.success')}
             </div>
           )}
           {status === 'error' && (
             <div className="bg-red-900/30 border border-red-500/30 text-red-400 px-3 sm:px-4 py-2 sm:py-3 rounded-lg text-[13px] sm:text-[14px]">
-              ❌ Etwas ist schiefgelaufen. Bitte versuche es nochmal oder schreib direkt an me@alessio.fm
+              ❌ {t('contact.form.error')}
             </div>
           )}
 
@@ -165,7 +159,7 @@ const Contact = () => {
             disabled={loading}
             className="bg-[#0EA5E9] hover:bg-[#0284C7] disabled:opacity-50 py-2.5 sm:py-3 px-6 sm:px-8 rounded-xl outline-none w-fit text-white font-bold shadow-md shadow-primary transition-all duration-300 text-[14px] sm:text-base"
           >
-            {loading ? 'Wird gesendet...' : 'Nachricht senden'}
+            {loading ? t('contact.form.sending') : t('contact.form.send')}
           </button>
         </form>
       </motion.div>
