@@ -120,7 +120,7 @@ const Hero = () => {
           {/* Glow effect behind text */}
           <span className="absolute inset-0 blur-2xl opacity-30 bg-gradient-to-r from-[#1E3A5F] via-[#0EA5E9] to-[#06B6D4]" />
           <span className="relative text-[#BEBEBE] hover:text-[#0EA5E9] transition-colors duration-300">
-            Kanishan
+            Alessio Carcavallo
           </span>
         </motion.h1>
 
